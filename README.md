@@ -7,11 +7,11 @@ Alicium 3.x is the ENVIRONMENT of Twitter!!
 
 Alice.exe(Alicium kernel)
 
-          ||
+(Link)
 
 Grimoire.dll(Execution module)
 
-   ||        ||        ||
+(Link)
 
 Plugins   Plugins    Plugins
 
