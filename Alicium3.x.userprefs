@@ -4,10 +4,11 @@
     <Files>
       <File FileName="Grimoire/Events.cs" Line="6" Column="2" />
       <File FileName="Grimoire/PluginBase.cs" Line="12" Column="1" />
-      <File FileName="Alice/Main.cs" Line="23" Column="4" />
-      <File FileName="Grimoire/Repository.cs" Line="20" Column="3" />
-      <File FileName="Grimoire/Magic.cs" Line="3" Column="19" />
-      <File FileName="Test/Hoge.cs" Line="8" Column="36" />
+      <File FileName="Grimoire/Repository.cs" Line="13" Column="22" />
+      <File FileName="Grimoire/Magic.cs" Line="12" Column="10" />
+      <File FileName="Test/Hoge.cs" Line="5" Column="2" />
+      <File FileName="Grimoire/Plugin.cs" Line="32" Column="3" />
+      <File FileName="Alice/Main.cs" Line="33" Column="94" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

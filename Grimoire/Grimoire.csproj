@@ -35,6 +35,8 @@
     <Compile Include="Events.cs" />
     <Compile Include="PluginBase.cs" />
     <Compile Include="Repository.cs" />
+    <Compile Include="Magic.cs" />
+    <Compile Include="Plugin.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Newtonsoft.Json">
@@ -46,5 +48,14 @@
     <Reference Include="Twitterizer2">
       <HintPath>..\..\Alicium2.x\packages\twitterizer.2.4.1.1\lib\net40\Twitterizer2.dll</HintPath>
     </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Net" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Drawing" />
   </ItemGroup>
 </Project>

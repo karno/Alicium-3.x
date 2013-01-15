@@ -41,11 +41,21 @@
     <Reference Include="Twitterizer2">
       <HintPath>..\packages\twitterizer.2.4.1.1\lib\net40\Twitterizer2.dll</HintPath>
     </Reference>
-    <Reference Include="Grimoire">
-      <HintPath>..\Grimoire\bin\Debug\Grimoire.dll</HintPath>
-    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Net" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Dynamic" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Main.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Grimoire\Grimoire.csproj">
+      <Project>{29271195-E9C0-4268-843A-A68CDB1228A2}</Project>
+      <Name>Grimoire</Name>
+    </ProjectReference>
   </ItemGroup>
 </Project>

@@ -7,11 +7,22 @@ namespace Test
 	{
 		public override void Initalize ()
 		{
-			Console.WriteLine("Initalized");
+			Console.WriteLine("Hogehoge~~");
 		}
 		public override void Dying ()
 		{
-			Console.WriteLine("Died");
+			Console.WriteLine("dustboxxxx");
+		}
+	}
+	public class Piyo : PluginBase
+	{
+		public override void Initalize ()
+		{
+			Console.WriteLine("Pretty Bird");
+		}
+		public override void Dying ()
+		{
+			Console.WriteLine("piyo!");
 		}
 	}
 }

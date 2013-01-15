@@ -20,6 +20,11 @@
     <WarningLevel>4</WarningLevel>
     <PlatformTarget>x86</PlatformTarget>
     <ConsolePause>false</ConsolePause>
+    <CustomCommands>
+      <CustomCommands>
+        <Command type="Custom" name="Copy Test.dll" command="cp ${SolutionDir}/Test/bin/Debug/Test.dll ${SolutionDir}/Alice/bin/Debug/Test.dll" workingdir="${SolutionDir}" />
+      </CustomCommands>
+    </CustomCommands>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
     <DebugType>none</DebugType>
@@ -32,11 +37,12 @@
   </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
-    <Reference Include="Grimoire">
-      <HintPath>..\Grimoire\bin\Debug\Grimoire.dll</HintPath>
-    </Reference>
+    <Compile Include="Hoge.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Hoge.cs" />
+    <ProjectReference Include="..\Grimoire\Grimoire.csproj">
+      <Project>{29271195-E9C0-4268-843A-A68CDB1228A2}</Project>
+      <Name>Grimoire</Name>
+    </ProjectReference>
   </ItemGroup>
 </Project>

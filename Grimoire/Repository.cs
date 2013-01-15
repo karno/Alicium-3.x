@@ -18,5 +18,10 @@ namespace Grimoire
 		public PluginType Type;
 		public string DlUrl;
 	}
+	public class Repository
+	{
+		public Package Data;
+		public UpdateType UpdateInfo;
+	}
 }
 
