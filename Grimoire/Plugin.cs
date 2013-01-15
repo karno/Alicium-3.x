@@ -21,7 +21,7 @@ namespace Grimoire
 			var Found = new List<Grimoire.PluginBase>();
 			for(int i=0;i<Types.Length;i++)
 			{
-				if(Types[i].BaseType==typeof(Grimoire.PluginBase))
+				if(Types[i].IsSubclassOf(typeof(Grimoire.PluginBase)))
 				{
 					var v=(Grimoire.PluginBase)Activator.CreateInstance(Types[i]);
 					Found.Add(v);

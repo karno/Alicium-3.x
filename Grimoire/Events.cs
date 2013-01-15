@@ -6,8 +6,8 @@ namespace Grimoire
 {
 	public class Events
 	{
-		private Dictionary<string,Action<object>> dat = new Dictionary<string, Action<object>>();
-		public Action<object> this[string index]
+		private Dictionary<string,EventHandler> dat = new Dictionary<string, EventHandler>();
+		public EventHandler this[string index]
 		{
 			get
 			{

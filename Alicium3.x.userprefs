@@ -2,13 +2,13 @@
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Alice/Main.cs">
     <Files>
-      <File FileName="Grimoire/Events.cs" Line="6" Column="2" />
-      <File FileName="Grimoire/PluginBase.cs" Line="12" Column="1" />
+      <File FileName="Grimoire/Events.cs" Line="9" Column="84" />
+      <File FileName="Grimoire/PluginBase.cs" Line="6" Column="3" />
       <File FileName="Grimoire/Repository.cs" Line="13" Column="22" />
-      <File FileName="Grimoire/Magic.cs" Line="12" Column="10" />
-      <File FileName="Test/Hoge.cs" Line="5" Column="2" />
-      <File FileName="Grimoire/Plugin.cs" Line="32" Column="3" />
-      <File FileName="Alice/Main.cs" Line="33" Column="94" />
+      <File FileName="Grimoire/Magic.cs" Line="9" Column="11" />
+      <File FileName="Test/Hoge.cs" Line="45" Column="49" />
+      <File FileName="Grimoire/Plugin.cs" Line="24" Column="45" />
+      <File FileName="Alice/Main.cs" Line="44" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

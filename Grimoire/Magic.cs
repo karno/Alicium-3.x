@@ -6,7 +6,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 
 namespace Grimoire
 {
-    internal class Magic
+    public class Magic
     {
         public static T XmlFRead<T>(string path)
         {
