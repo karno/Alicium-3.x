@@ -4,17 +4,10 @@ using Twitterizer;
 
 namespace Grimoire
 {
-	public delegate void AliceEventHandler(object sender,string e);
-	public delegate void StatusEventHandler(object sender, TwitterStatus e);
-	public delegate void UserEventHandler(object sender, TwitterUser u);
-	public enum EventType
-	{
-		Favorited,Followed,Unfavorited
-	}
 	public class Events
 	{
-		private Dictionary<string,EventHandler> dat = new Dictionary<string, EventHandler>();
-		public EventHandler this[string index]
+		private Dictionary<string,Action<object>> dat = new Dictionary<string, Action<object>>();
+		public Action<object> this[string index]
 		{
 			get
 			{

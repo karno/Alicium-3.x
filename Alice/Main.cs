@@ -8,13 +8,19 @@ namespace Alice
 		public static void Main()
 		{
 			Loving();
+			Test();
+			
 		}
 		static void Loving()
 		{
-			Console.WriteLine("Hello,Marisa!");
+			Console.WriteLine("Love you,Marisa!");
 			string a = Console.ReadLine();
 			Console.WriteLine(a);
 			Console.ReadLine();
+		}
+		static void Test()
+		{
+			
 		}
 	}
 }

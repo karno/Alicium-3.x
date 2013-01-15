@@ -5,6 +5,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Grimoire", "Grimoire\Grimoi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alice", "Alice\Alice.csproj", "{B52FB9CD-0856-498E-955B-C7B8EE4BD2F5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test", "Test\Test.csproj", "{A682DB61-6F80-4AE8-B197-B0D72DDBBFD7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x86 = Debug|x86
@@ -15,6 +17,10 @@ Global
 		{29271195-E9C0-4268-843A-A68CDB1228A2}.Debug|x86.Build.0 = Debug|x86
 		{29271195-E9C0-4268-843A-A68CDB1228A2}.Release|x86.ActiveCfg = Release|x86
 		{29271195-E9C0-4268-843A-A68CDB1228A2}.Release|x86.Build.0 = Release|x86
+		{A682DB61-6F80-4AE8-B197-B0D72DDBBFD7}.Debug|x86.ActiveCfg = Debug|x86
+		{A682DB61-6F80-4AE8-B197-B0D72DDBBFD7}.Debug|x86.Build.0 = Debug|x86
+		{A682DB61-6F80-4AE8-B197-B0D72DDBBFD7}.Release|x86.ActiveCfg = Release|x86
+		{A682DB61-6F80-4AE8-B197-B0D72DDBBFD7}.Release|x86.Build.0 = Release|x86
 		{B52FB9CD-0856-498E-955B-C7B8EE4BD2F5}.Debug|x86.ActiveCfg = Debug|x86
 		{B52FB9CD-0856-498E-955B-C7B8EE4BD2F5}.Debug|x86.Build.0 = Debug|x86
 		{B52FB9CD-0856-498E-955B-C7B8EE4BD2F5}.Release|x86.ActiveCfg = Release|x86
