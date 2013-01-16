@@ -5,46 +5,44 @@ namespace Test
 {
 	public class Hoge : PluginBase
 	{
-		Events e;
-		public override void Initalize (object o)
+		public override void Initalize ()
 		{
-			Console.WriteLine("Hogehoge~~" + o.ToString());
+			Console.WriteLine("hoge init!");
+			Plugin.AddEvent("test",hoge);
+		}
+		public override void Call (object o)
+		{
+			Console.WriteLine("hoge");
 		}
 		public override void Dying ()
 		{
-			Console.WriteLine("dustboxxxx");
-			e["test"] -= foo;
+			Console.WriteLine("hoge died.");
+			Plugin.RemoveEvent("test",hoge);
 		}
-		public override void EventSet (Events _e)
+		public void hoge(object o,AliciumEventArgs e)
 		{
-			e = _e;
-			e["test"] += foo;
-		}
-		public void foo(object sender,EventArgs e)
-		{
-			Console.WriteLine("foooooooooooo!!");
+			Console.WriteLine("hoge event");
 		}
 	}
 	public class Piyo : PluginBase
 	{
-		Events e;
-		public override void Initalize (object o)
+		public override void Initalize ()
 		{
-			Console.WriteLine("Pretty Bird "+o.ToString());
+			Console.WriteLine("piyo init!");
+			Plugin.AddEvent("test",piyo);
+		}
+		public override void Call (object o)
+		{
+			Console.WriteLine("piyo");
 		}
 		public override void Dying ()
 		{
-			Console.WriteLine("piyo!");
-			e["test"] -= piyopiyo;
+			Console.WriteLine("piyo died.");
+			Plugin.RemoveEvent("test",piyo);
 		}
-		public override void EventSet (Events _e)
+		public void piyo(object o,AliciumEventArgs e)
 		{
-			e = _e;
-			e["test"] += piyopiyo;
-		}
-		public void piyopiyo(object sender,EventArgs e)
-		{
-			Console.WriteLine("piyopiyo");
+			Console.WriteLine("piyo event");
 		}
 	}
 }

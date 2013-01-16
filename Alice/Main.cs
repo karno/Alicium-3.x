@@ -12,17 +12,17 @@ namespace Alice
 	{
 		public static void Main(string[] args)
 		{
-			Test ();
+			if(args.Length != 0 && args[0] == "-c")
+			{
+				Cui ();
+			}
 		}
-		static void Test()
+		static void Cui()
 		{
 			Console.Write(@"Alicium 3.x kernel v3.0
 build 20.130.116
 
 Alice:> ");
-			var e = new Grimoire.Events();
-			e["test"] = (x,y)=>{};
-			var Found = new List<Grimoire.PluginBase>();
 			while(true)
 			{
 				string command=Console.ReadLine();
@@ -45,50 +45,45 @@ help ... Show this.");
 				{
 					try
 					{
-						var Get = Grimoire.Plugin.Load((Grimoire.Magic.CutString("load ",command)[0]));
-						Get.ForEach(x => {x.EventSet(e);});
-						Found.AddRange(Get);
+						Plugin.Load((Magic.CutString("load ",command)[0]));
 						Console.WriteLine("Success.");
 					}
 					catch(FileNotFoundException)
 					{
 						Console.WriteLine("Not found.");
 					}
-			       Console.WriteLine(Found.Count + " Plugins loaded now.");
+			       Console.WriteLine(Plugin.Plugins.Count + " Plugins loaded now.");
 				}
 				else if(command.Contains("rm "))
 				{
-					if(Grimoire.Magic.CutString("rm ",command)[0] == "-a" || Grimoire.Magic.CutString("rm ",command)[0] == "--all")
+					if(Magic.CutString("rm ",command)[0] == "-a" || Grimoire.Magic.CutString("rm ",command)[0] == "--all")
 					{
-						Found.ForEach(x => {x.Dying();});
-						Found.Clear();
+						Plugin.Unload(Plugin.Plugins);
 						Console.WriteLine("All Plugins was unloaded.");
-			       	Console.WriteLine(Found.Count + " Plugins loaded now.");
+			       	Console.WriteLine(Plugin.Plugins.Count + " Plugins loaded now.");
 					}
 					else
 					{
-						var del=Found.FindAll((x) => x.GetType().ToString().Contains(Grimoire.Magic.CutString("rm ",command)[0]));
-						del.ForEach(x => {x.Dying();});
-						Found.RemoveAll((x) => del.Contains(x));
+						var del=Plugin.Plugins.FindAll((x) => x.GetType().ToString().Contains(Magic.CutString("rm ",command)[0]));
+						Plugin.Unload(del);
 						Console.WriteLine(del.Count + " Plugins was unloaded.");
-			       	Console.WriteLine(Found.Count + " Plugins loaded now.");
+			       	Console.WriteLine(Plugin.Plugins.Count + " Plugins loaded now.");
 					}
 				}
 				else if(command=="ls")
 				{
-					foreach(var p in Found)
+					foreach(var p in Plugin.Plugins)
 					{
 						Console.WriteLine(" - " + p.GetType().ToString());
 					}
 				}
 				else if(command=="event")
 				{
-					e["test"](null,null);
+					Plugin.CallEvent("test",null);
 				}
-				else if(Found.Exists((x) => x.GetType().ToString() == command))
+				else if(Plugin.PluginExists(command))
 				{
-					Found.Find((x) => x.GetType().ToString() == command).Initalize("");
-					
+					Plugin.CallPlugin(command,"");
 				}
 				else
 				{

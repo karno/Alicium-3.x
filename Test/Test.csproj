@@ -22,7 +22,7 @@
     <ConsolePause>false</ConsolePause>
     <CustomCommands>
       <CustomCommands>
-        <Command type="Custom" name="Copy Test.dll" command="cp ${SolutionDir}/Test/bin/Debug/Test.dll ${SolutionDir}/Alice/bin/Debug/Test.dll" workingdir="${SolutionDir}" />
+        <Command type="AfterBuild" name="Copy Test.dll" command="cp ${SolutionDir}/Test/bin/Debug/Test.dll ${SolutionDir}/Alice/bin/Debug/Test.dll" workingdir="${SolutionDir}" />
       </CustomCommands>
     </CustomCommands>
   </PropertyGroup>
