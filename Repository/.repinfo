@@ -6,7 +6,7 @@
       <Version>1.0.0</Version>
       <Depend />
       <Type>Develop</Type>
-      <DlUrl>"Test/v1.0.0/test.zip"<DlUrl />
+      <DlUrl>"https://github.com/a1cn/Alicium-3.x/raw/master/Repository/Test/v1.0.0/test.zip"<DlUrl />
     </Data>
     <UpdateInfo>IMPORTANT</UpdateInfo>
   </Repository>

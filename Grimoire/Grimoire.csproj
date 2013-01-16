@@ -37,6 +37,7 @@
     <Compile Include="Repository.cs" />
     <Compile Include="Magic.cs" />
     <Compile Include="Plugin.cs" />
+    <Compile Include="Settings.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Newtonsoft.Json">

@@ -12,15 +12,19 @@ namespace Alice
 	{
 		public static void Main(string[] args)
 		{
+			if(!Directory.Exists("Plugins"))Directory.CreateDirectory("Plugins");
+			if(!Directory.Exists("Setings"))Directory.CreateDirectory("Setings");
 			if(args.Length != 0 && args[0] == "-c")
 			{
+				//Guignol.Update();
+				//Guignol.Install("Test");
 				Cui ();
 			}
 		}
 		static void Cui()
 		{
 			Console.Write(@"Alicium 3.x kernel v3.0
-build 20.130.116
+build 20.130.117
 
 Alice:> ");
 			while(true)
