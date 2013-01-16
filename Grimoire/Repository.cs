@@ -25,6 +25,7 @@ namespace Grimoire
 					Console.WriteLine("Get: "+s);
 				}
 			}
+			File.Delete("Settings/tmp");
 			Console.WriteLine("Everything are updated.");
 		}
 		public static void Install(string name)
@@ -35,14 +36,16 @@ namespace Grimoire
 			if(p==null)throw new Exception("There isn't a package such as "+name + ".");
 			using(var wc = new WebClient())
 			{
+				Console.WriteLine("From : "+p.Data.DlUrl);
 				Directory.CreateDirectory("Plugins/"+name);
-				wc.DownloadFile(p.Data.DlUrl,"Plugins/"+name+"tmp.zip");
+				wc.DownloadFile(p.Data.DlUrl,"Plugins/tmp");
 				Console.WriteLine("Extracting...");
-				using(ZipFile z=new ZipFile("Plugins/"+name+"tmp.zip"))
+				using(ZipFile z=new ZipFile("Plugins/tmp"))
 				{
 					z.ExtractAll("Plugins/"+name+"/",ExtractExistingFileAction.OverwriteSilently);
 				}
 			}
+			File.Delete("tmp");
 			Console.WriteLine(name + "is installed.");
 		}
 	}

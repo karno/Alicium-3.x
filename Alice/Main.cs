@@ -12,14 +12,18 @@ namespace Alice
 	{
 		public static void Main(string[] args)
 		{
-			if(!Directory.Exists("Plugins"))Directory.CreateDirectory("Plugins");
-			if(!Directory.Exists("Setings"))Directory.CreateDirectory("Setings");
+			Init();
 			if(args.Length != 0 && args[0] == "-c")
 			{
-				//Guignol.Update();
-				//Guignol.Install("Test");
+				Guignol.Update();
+				Guignol.Install("Test");
 				Cui ();
 			}
+		}
+		static void Init()
+		{
+			if(!Directory.Exists("Plugins"))Directory.CreateDirectory("Plugins");
+			if(!Directory.Exists("Settings"))Directory.CreateDirectory("Settings");
 		}
 		static void Cui()
 		{
