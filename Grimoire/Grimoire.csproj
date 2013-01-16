@@ -57,5 +57,8 @@
     <Reference Include="System.Net" />
     <Reference Include="System.Web" />
     <Reference Include="System.Drawing" />
+    <Reference Include="Ionic.Zip">
+      <HintPath>..\packages\DotNetZip\zip-v1.9\Ionic.Zip.dll</HintPath>
+    </Reference>
   </ItemGroup>
 </Project>

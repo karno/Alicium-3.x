@@ -8,7 +8,7 @@
       <File FileName="Grimoire/Magic.cs" Line="9" Column="11" />
       <File FileName="Test/Hoge.cs" Line="9" Column="4" />
       <File FileName="Grimoire/Plugin.cs" Line="51" Column="16" />
-      <File FileName="Alice/Main.cs" Line="18" Column="5" />
+      <File FileName="Alice/Main.cs" Line="82" Column="24" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

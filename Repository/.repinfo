@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfRepository xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Repository>
+    <Data>
+      <Name>Test</Name>
+      <Version>1.0.0</Version>
+      <Depend />
+      <Type>Develop</Type>
+      <DlUrl>"Test/v1.0.0/test.zip"<DlUrl />
+    </Data>
+    <UpdateInfo>IMPORTANT</UpdateInfo>
+  </Repository>
+</ArrayOfRepository>
