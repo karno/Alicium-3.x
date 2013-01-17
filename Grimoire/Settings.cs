@@ -12,20 +12,22 @@ namespace Grimoire
 		/// <value>
 		/// The repository urls.
 		/// </value>
-		public static List<string> RepUrls
+		static string[] _u=new string[0];
+		public static string[] RepUrls
 		{
 			get
 			{
 				if(!File.Exists("Settings/RepoUrls.xml"))
 				{
-					Magic.XmlFWrite<List<string>>(new List<string>(),"Settings/RepoUrls.xml");
+					Magic.XmlFWrite<string[]>(new string[0],"Settings/RepoUrls.xml");
 				}
-				return Magic.XmlFRead<List<string>>("Settings/RepoUrls.xml");
+				_u = Magic.XmlFRead<string[]>("Settings/RepoUrls.xml");
+				return _u;
 			}
 			set
 			{
-				
-				Magic.XmlFWrite<List<string>>(value,"Settings/RepoUrls.xml");
+				_u = value;
+				Magic.XmlFWrite<string[]>(_u,"Settings/RepoUrls.xml");
 			}
 		}
 		/// <summary>
@@ -34,20 +36,22 @@ namespace Grimoire
 		/// <value>
 		/// The package list.
 		/// </value>
-		public static List<Package> PackList
+		static Package[] _p=new Package[0];
+		public static Package[] PackList
 		{
 			get
 			{
 				if(!File.Exists("Settings/RepoData.xml"))
 				{
-					Magic.XmlFWrite<List<Package>>(new List<Package>(),"Settings/RepoData.xml");
+					Magic.XmlFWrite<Package[]>(new Package[0],"Settings/RepoData.xml");
 				}
-				return Magic.XmlFRead<List<Package>>("Settings/RepoData.xml");
+				_p = Magic.XmlFRead<Package[]>("Settings/RepoData.xml");
+				return _p;
 			}
 			set
 			{
-				
-				Magic.XmlFWrite<List<Package>>(value,"Settings/RepoData.xml");
+				_p = value;
+				Magic.XmlFWrite<Package[]>(_p,"Settings/RepoData.xml");
 			}
 		}
 		

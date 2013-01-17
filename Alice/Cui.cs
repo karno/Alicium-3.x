@@ -90,7 +90,7 @@ help ... Show this.");
 				Console.Write("Alice:> ");
 			}
 		}
-		static void UpdateCui()
+		public static void UpdateCui()
 		{
 			Console.WriteLine("Updating...");
 			try
@@ -102,18 +102,11 @@ help ... Show this.");
 				Console.WriteLine("Failed to update repository datas.Please retry later.");
 			}
 		}
-		static void InstallCui(string name)
+		public static void InstallCui(string name)
 		{
 			Console.WriteLine("Solving dependences...");
-			try
-			{
 				Guignol.Install(name);
 				Console.WriteLine(name + " is completely installed.");
-			}
-			catch(Exception e)
-			{
-				Console.WriteLine(e.Message);
-			}
 		}
 	}
 }

@@ -33,13 +33,12 @@ namespace Grimoire
 					using(var wc = new WebClient())
 					{
 						wc.DownloadFile(s + ".repinfo","Settings/tmp");
-						Dl.AddRange(Magic.XmlFRead<Package[]>("Settings/tmp"));
 						Console.WriteLine("Hit: "+s);
+						Dl.AddRange(Magic.XmlFRead<Package[]>("Settings/tmp"));
 					}
 				}
 				File.Delete("Settings/tmp");
-				Settings.PackList.Clear();
-				Settings.PackList = Dl;
+				Settings.PackList = Dl.ToArray();
 			}
 			catch(Exception e)
 			{
@@ -52,12 +51,9 @@ namespace Grimoire
 		/// <param name='name'>
 		/// Name of package you want to install.
 		/// </param>
-		/// <exception cref='GuignolException'>
-		/// Is thrown when some exception happens in the installetion.
-		/// </exception>
 		public static void Install(string name)
 		{
-			var hoge = Settings.PackList.Find(x=>x.Name==name);
+			var hoge = new List<Package>(Settings.PackList).Find(x=>x.Name==name);
 			var install = SolveDepend(hoge);
 			ServicePointManager.ServerCertificateValidationCallback = delegate { return true; }; 
 			foreach(Package p in install)
@@ -72,7 +68,7 @@ namespace Grimoire
 					{
 						Console.WriteLine("Downloading From : "+p.DlUrl);
 						Directory.CreateDirectory("Plugins/"+p.Name);
-						wc.DownloadFile(p.DlUrl,"Plugins/tmp");
+						wc.DownloadFile(new Uri(p.DlUrl),"Plugins/tmp");
 						Console.WriteLine("Extracting...");
 						using(ZipFile z=new ZipFile("Plugins/tmp"))
 						{
@@ -83,7 +79,7 @@ namespace Grimoire
 					}
 					catch(Exception e)
 					{
-						throw new GuignolException(e.Message);
+						throw e;
 					}
 				}
 			}
@@ -111,11 +107,11 @@ namespace Grimoire
 		{
 			foreach(string s in e.Depend)
 			{
-				if(!Settings.PackList.Exists(x=>x.Name==s))
+				if(!new List<Package>(Settings.PackList).Exists(x=>x.Name==s))
 				{
 					throw new GuignolException("Some of Dependences isn't found from database.\nPlease update repository datas and retry later.");
 				}
-				var ad=Settings.PackList.Find(y=>y.Name==s);
+				var ad=new List<Package>(Settings.PackList).Find(y=>y.Name==s);
 				if(!l.Contains(ad))
 				{
 					l.Add(ad);
