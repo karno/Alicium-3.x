@@ -68,12 +68,13 @@ namespace Grimoire
 					try
 					{
 						Console.WriteLine("Downloading From : "+p.DlUrl);
-						Directory.CreateDirectory("Plugins/"+p.Name);
-						wc.DownloadFile(new Uri(p.DlUrl.Replace(Settings.DoubleQuotation,"")),"Plugins/tmp");
+						//Directory.CreateDirectory("Plugins/"+p.Name);
+						wc.DownloadFile(new Uri(p.DlUrl.Replace("\"","")),"Plugins/tmp.zip");
 						Console.WriteLine("Extracting...");
-						using(ZipFile z=new ZipFile("Plugins/tmp"))
+						using(ZipFile z=new ZipFile("Plugins/tmp.zip"))
 						{
-							z.ExtractAll("Plugins/"+p.Name+"/",ExtractExistingFileAction.OverwriteSilently);
+							Console.WriteLine("To : Plugins/"+p.Name);
+							z.ExtractAll(@"Plugins\"+p.Name+@"\", ExtractExistingFileAction.OverwriteSilently);
 						}
 						File.Delete("tmp");
 						Console.WriteLine(p.Name + "is installed.");
