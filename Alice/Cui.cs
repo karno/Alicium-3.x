@@ -46,7 +46,7 @@ help ... Show this.");
 						Plugin.Load((Magic.CutString("load ",command)[0]));
 						Console.WriteLine("Success.");
 					}
-					catch(FileNotFoundException)
+					catch
 					{
 						Console.WriteLine("Not found.");
 					}

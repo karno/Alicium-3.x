@@ -15,8 +15,6 @@ namespace Alice
 			Init();
 			if(args.Length != 0 && args[0] == "-c")
 			{
-				Cui.UpdateCui();
-				Cui.InstallCui("Test");
 				Cui.CuiMain();
 			}
 		}

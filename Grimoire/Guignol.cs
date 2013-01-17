@@ -77,7 +77,7 @@ namespace Grimoire
 							z.ExtractAll(@"Plugins\"+p.Name+@"\", ExtractExistingFileAction.OverwriteSilently);
 						}
 						File.Delete("tmp");
-						Console.WriteLine(p.Name + "is installed.");
+						Console.WriteLine(p.Name + " is installed.");
 					}
 					catch(Exception e)
 					{
