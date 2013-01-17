@@ -38,6 +38,8 @@
     <Compile Include="Magic.cs" />
     <Compile Include="Plugin.cs" />
     <Compile Include="Settings.cs" />
+    <Compile Include="Exceptions.cs" />
+    <Compile Include="Guignol.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Newtonsoft.Json">
