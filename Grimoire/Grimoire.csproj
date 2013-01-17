@@ -42,15 +42,6 @@
     <Compile Include="Guignol.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\..\Alicium2.x\packages\twitterizer.2.4.1.1\lib\net40\Newtonsoft.Json.dll</HintPath>
-    </Reference>
-    <Reference Include="Twitterizer2.Streaming">
-      <HintPath>..\..\Alicium2.x\packages\twitterizer.2.4.1.1\lib\net40\Twitterizer2.Streaming.dll</HintPath>
-    </Reference>
-    <Reference Include="Twitterizer2">
-      <HintPath>..\..\Alicium2.x\packages\twitterizer.2.4.1.1\lib\net40\Twitterizer2.dll</HintPath>
-    </Reference>
     <Reference Include="System.Xml" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -61,7 +52,16 @@
     <Reference Include="System.Web" />
     <Reference Include="System.Drawing" />
     <Reference Include="Ionic.Zip">
-      <HintPath>..\packages\DotNetZip\zip-v1.9\Ionic.Zip.dll</HintPath>
+      <HintPath>..\Packages\DotNetZip\zip-v1.9\Ionic.Zip.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\Packages\twitterizer.2.4.1.1\lib\net40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Twitterizer2.Streaming">
+      <HintPath>..\Packages\twitterizer.2.4.1.1\lib\net40\Twitterizer2.Streaming.dll</HintPath>
+    </Reference>
+    <Reference Include="Twitterizer2">
+      <HintPath>..\Packages\twitterizer.2.4.1.1\lib\net40\Twitterizer2.dll</HintPath>
     </Reference>
   </ItemGroup>
 </Project>

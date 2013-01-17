@@ -36,6 +36,7 @@ rm [Word] ... Unload plugins whose name contains the Word.
 rm -a ... Unload all plugins.
 ls ... Show the list of loaded plugins.
 [Name] ... Execute the plugin.
+eventtest ... Call the test event.
 help ... Show this.");
 				}
 				else if(command.Contains("load "))
@@ -74,7 +75,7 @@ help ... Show this.");
 						Console.WriteLine(" - " + p.GetType().ToString());
 					}
 				}
-				else if(command=="event")
+				else if(command=="eventtest")
 				{
 					Plugin.CallEvent("test",null);
 				}
@@ -89,7 +90,7 @@ help ... Show this.");
 				Console.Write("Alice:> ");
 			}
 		}
-		public static void UpdateCui()
+		static void UpdateCui()
 		{
 			Console.WriteLine("Updating...");
 			try
@@ -101,7 +102,7 @@ help ... Show this.");
 				Console.WriteLine("Failed to update repository datas.Please retry later.");
 			}
 		}
-		public static void InstallCui(string name)
+		static void InstallCui(string name)
 		{
 			Console.WriteLine("Solving dependences...");
 			try

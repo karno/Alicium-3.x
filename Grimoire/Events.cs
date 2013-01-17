@@ -27,7 +27,6 @@ namespace Grimoire
 			}
 		}
 	}
-	public delegate void AliciumEventHandler(object sender,AliciumEventArgs e);
 	public class AliciumEventArgs : EventArgs
 	{
 		public object Data;

@@ -20,14 +20,10 @@ namespace Grimoire
 	{
 		public string Name;
 		public string Version;
+		public UpdateType UpdateInfo;
 		public string[] Depend;
 		public PluginType Type;
 		public string DlUrl;
-	}
-	public class Repository
-	{
-		public Package Data;
-		public UpdateType UpdateInfo;
 	}
 }
 

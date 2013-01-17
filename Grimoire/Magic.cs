@@ -6,8 +6,23 @@ using System.Runtime.Serialization.Formatters.Binary;
 
 namespace Grimoire
 {
+	/// <summary>
+	/// Useful functions.
+	/// </summary>
     public class Magic
     {
+		/// <summary>
+		/// Read an instance of class from file written in XML.
+		/// </summary>
+		/// <returns>
+		/// The instance saved in the file.
+		/// </returns>
+		/// <param name='path'>
+		/// Path you want to read.
+		/// </param>
+		/// <typeparam name='T'>
+		/// The 1st type parameter.
+		/// </typeparam>
         public static T XmlFRead<T>(string path)
         {
             using (var fs = File.OpenRead(path))
@@ -17,6 +32,18 @@ namespace Grimoire
                 return obj;
             }
         }
+		/// <summary>
+		/// Save an instance to file as XML.
+		/// </summary>
+		/// <param name='obj'>
+		/// Object you want to save.
+		/// </param>
+		/// <param name='path'>
+		/// Path you want to save to.
+		/// </param>
+		/// <typeparam name='T'>
+		/// The 1st type parameter.
+		/// </typeparam>
         public static void XmlFWrite<T>(T obj, string path)
         {
             using (var fs = File.OpenWrite(path))
@@ -25,6 +52,18 @@ namespace Grimoire
                 bf.Serialize(fs, obj);
             }
         }
+		/// <summary>
+		/// Decode an instance from xml,
+		/// </summary>
+		/// <returns>
+		/// The instance.
+		/// </returns>
+		/// <param name='XML'>
+		/// String written in XML.
+		/// </param>
+		/// <typeparam name='T'>
+		/// The 1st type parameter.
+		/// </typeparam>
         public static T XmlDecode<T>(string XML)
         {
             using (var fs = new StringReader(XML))
@@ -34,6 +73,18 @@ namespace Grimoire
                 return obj;
             }
         }
+		/// <summary>
+		/// Encode an instance to XML.
+		/// </summary>
+		/// <returns>
+		/// XML.
+		/// </returns>
+		/// <param name='obj'>
+		/// Object you want to encode to XML.
+		/// </param>
+		/// <typeparam name='T'>
+		/// The 1st type parameter.
+		/// </typeparam>
         public static string XmlEncode<T>(T obj)
         {
             using (var fs = new StringWriter())
@@ -43,6 +94,15 @@ namespace Grimoire
                 return fs.ToString();
             }
         }
+		/// <summary>
+		/// Encode string to Url.
+		/// </summary>
+		/// <returns>
+		/// The Url.
+		/// </returns>
+		/// <param name='value'>
+		/// String you want to encode.
+		/// </param>
         public static string UrlEncode(string value)
         {
             string unreserved = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-_.~";
@@ -90,10 +150,6 @@ namespace Grimoire
                 result = new string[0];
             }
             return result;
-        }
-        public static object CreateInstance(string name, params object[] args)
-        {
-            return Activator.CreateInstance(Type.GetType(name), args);
         }
     }
 }

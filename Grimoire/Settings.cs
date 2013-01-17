@@ -6,6 +6,12 @@ namespace Grimoire
 {
 	public static class Settings
 	{
+		/// <summary>
+		/// Gets or sets the repository urls.
+		/// </summary>
+		/// <value>
+		/// The repository urls.
+		/// </value>
 		public static List<string> RepUrls
 		{
 			get
@@ -22,20 +28,26 @@ namespace Grimoire
 				Magic.XmlFWrite<List<string>>(value,"Settings/RepoUrls.xml");
 			}
 		}
-		public static List<Repository> RepList
+		/// <summary>
+		/// Gets or sets the package list.
+		/// </summary>
+		/// <value>
+		/// The package list.
+		/// </value>
+		public static List<Package> PackList
 		{
 			get
 			{
 				if(!File.Exists("Settings/RepoData.xml"))
 				{
-					Magic.XmlFWrite<List<Repository>>(new List<Repository>(),"Settings/RepoData.xml");
+					Magic.XmlFWrite<List<Package>>(new List<Package>(),"Settings/RepoData.xml");
 				}
-				return Magic.XmlFRead<List<Repository>>("Settings/RepoData.xml");
+				return Magic.XmlFRead<List<Package>>("Settings/RepoData.xml");
 			}
 			set
 			{
 				
-				Magic.XmlFWrite<List<Repository>>(value,"Settings/RepoData.xml");
+				Magic.XmlFWrite<List<Package>>(value,"Settings/RepoData.xml");
 			}
 		}
 		

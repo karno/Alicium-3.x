@@ -37,15 +37,6 @@
   </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\packages\twitterizer.2.4.1.1\lib\net40\Newtonsoft.Json.dll</HintPath>
-    </Reference>
-    <Reference Include="Twitterizer2.Streaming">
-      <HintPath>..\packages\twitterizer.2.4.1.1\lib\net40\Twitterizer2.Streaming.dll</HintPath>
-    </Reference>
-    <Reference Include="Twitterizer2">
-      <HintPath>..\packages\twitterizer.2.4.1.1\lib\net40\Twitterizer2.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Net" />
     <Reference Include="System.Web" />
@@ -53,6 +44,15 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Data" />
     <Reference Include="System.Dynamic" />
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\Packages\twitterizer.2.4.1.1\lib\net40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Twitterizer2.Streaming">
+      <HintPath>..\Packages\twitterizer.2.4.1.1\lib\net40\Twitterizer2.Streaming.dll</HintPath>
+    </Reference>
+    <Reference Include="Twitterizer2">
+      <HintPath>..\Packages\twitterizer.2.4.1.1\lib\net40\Twitterizer2.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Main.cs" />

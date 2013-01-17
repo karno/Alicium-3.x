@@ -1,13 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ArrayOfRepository xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <Repository>
-    <Data>
-      <Name>Test</Name>
-      <Version>1.0.0</Version>
-      <Depend />
-      <Type>Develop</Type>
-      <DlUrl>"https://github.com/a1cn/Alicium-3.x/raw/master/Repository/Test/v1.0.0/test.zip"</DlUrl>
-    </Data>
+<ArrayOfPackage xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Package>
+    <Name>Test</Name>
+    <Version>1.0.0</Version>
+    <Depend />
+    <Type>Develop</Type>
     <UpdateInfo>IMPORTANT</UpdateInfo>
-  </Repository>
-</ArrayOfRepository>
+    <DlUrl>"https://github.com/a1cn/Alicium-3.x/raw/master/Repository/Test/v1.0.0/test.zip"</DlUrl>
+    <UpdateInfo>IMPORTANT</UpdateInfo>
+  </Package>
+</ArrayOfPackage>
