@@ -55,6 +55,7 @@ namespace Grimoire
 		{
 			var hoge = new List<Package>(Settings.PackList).Find(x=>x.Name==name);
 			var install = SolveDepend(hoge);
+			Console.WriteLine("Solved successfully.");
 			ServicePointManager.ServerCertificateValidationCallback = delegate { return true; }; 
 			foreach(Package p in install)
 			{

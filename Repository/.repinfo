@@ -6,6 +6,6 @@
     <UpdateInfo>IMPORTANT</UpdateInfo>
     <Depend />
     <Type>Develop</Type>
-    <DlUrl>"https://raw.github.com/a1cn/Alicium-3.x/master/Repository/Test/v1.0.0/test.zip"</DlUrl>
+    <DlUrl>https://raw.github.com/a1cn/Alicium-3.x/master/Repository/Test/v1.0.0/test.zip</DlUrl>
   </Package>
 </ArrayOfPackage>
