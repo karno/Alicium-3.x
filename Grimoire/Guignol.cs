@@ -69,7 +69,7 @@ namespace Grimoire
 					{
 						Console.WriteLine("Downloading From : "+p.DlUrl);
 						Directory.CreateDirectory("Plugins/"+p.Name);
-						wc.DownloadFile(new Uri(p.DlUrl),"Plugins/tmp");
+						wc.DownloadFile(new Uri(p.DlUrl.Replace(Settings.DoubleQuotation,"")),"Plugins/tmp");
 						Console.WriteLine("Extracting...");
 						using(ZipFile z=new ZipFile("Plugins/tmp"))
 						{

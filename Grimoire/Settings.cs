@@ -54,6 +54,13 @@ namespace Grimoire
 				Magic.XmlFWrite<Package[]>(_p,"Settings/RepoData.xml");
 			}
 		}
+		public static string DoubleQuotation
+		{
+			get
+			{
+				return Magic.FRead("Settings/dq");
+			}
+		}
 		
 	}
 }
