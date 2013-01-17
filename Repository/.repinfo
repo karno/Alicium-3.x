@@ -3,10 +3,9 @@
   <Package>
     <Name>Test</Name>
     <Version>1.0.0</Version>
+    <UpdateInfo>IMPORTANT</UpdateInfo>
     <Depend />
     <Type>Develop</Type>
-    <UpdateInfo>IMPORTANT</UpdateInfo>
     <DlUrl>https://raw.github.com/a1cn/Alicium-3.x/master/Repository/Test/v1.0.0/test.zip</DlUrl>
-    <UpdateInfo>IMPORTANT</UpdateInfo>
   </Package>
 </ArrayOfPackage>
