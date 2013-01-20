@@ -34,12 +34,13 @@
   <ItemGroup>
     <Compile Include="Events.cs" />
     <Compile Include="PluginBase.cs" />
-    <Compile Include="Repository.cs" />
     <Compile Include="Magic.cs" />
     <Compile Include="Plugin.cs" />
     <Compile Include="Settings.cs" />
     <Compile Include="Exceptions.cs" />
     <Compile Include="Guignol.cs" />
+    <Compile Include="Manage.cs" />
+    <Compile Include="Package.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.Xml" />

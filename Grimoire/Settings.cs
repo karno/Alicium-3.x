@@ -54,7 +54,30 @@ namespace Grimoire
 				Magic.XmlFWrite<Package[]>(_p,"Settings/RepoData.xml");
 			}
 		}
-		
+		/// <summary>
+		/// Gets or sets the installed package list.
+		/// </summary>
+		/// <value>
+		/// The installed package list.
+		/// </value>
+		static Package[] _i=new Package[0];
+		public static Package[] Installed
+		{
+			get
+			{
+				if(!File.Exists("Settings/Installed.xml"))
+				{
+					Magic.XmlFWrite<Package[]>(new Package[0],"Settings/Installed.xml");
+				}
+				_i = Magic.XmlFRead<Package[]>("Settings/Installed.xml");
+				return _i;
+			}
+			set
+			{
+				_i = value;
+				Magic.XmlFWrite<Package[]>(_i,"Settings/Installed.xml");
+			}
+		}
 	}
 }
-
+ 

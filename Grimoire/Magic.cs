@@ -132,7 +132,7 @@ namespace Grimoire
                 streamWriter.Write(value);
             }
         }        
-	 public static string[] CutString(string sep, string str)
+	 	public static string[] CutString(string sep, string str)
         {
             string[] result;
             try

@@ -8,7 +8,7 @@ namespace Test
 		public override void Initalize ()
 		{
 			Console.WriteLine("hoge init!");
-			Plugin.AddEvent("test",hoge);
+			Plugin.AddToEvent("test",hoge);
 		}
 		public override void Call (object o)
 		{
@@ -17,7 +17,7 @@ namespace Test
 		public override void Dying ()
 		{
 			Console.WriteLine("hoge died.");
-			Plugin.RemoveEvent("test",hoge);
+			Plugin.RemoveFromEvent("test",hoge);
 		}
 		public void hoge(object o,AliciumEventArgs e)
 		{
@@ -29,7 +29,7 @@ namespace Test
 		public override void Initalize ()
 		{
 			Console.WriteLine("piyo init!");
-			Plugin.AddEvent("test",piyo);
+			Plugin.AddToEvent("test",piyo);
 		}
 		public override void Call (object o)
 		{
@@ -38,7 +38,7 @@ namespace Test
 		public override void Dying ()
 		{
 			Console.WriteLine("piyo died.");
-			Plugin.RemoveEvent("test",piyo);
+			Plugin.RemoveFromEvent("test",piyo);
 		}
 		public void piyo(object o,AliciumEventArgs e)
 		{

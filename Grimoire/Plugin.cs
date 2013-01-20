@@ -62,7 +62,7 @@ namespace Grimoire
 		/// <param name='e'>
 		/// The function.
 		/// </param>
-		public static void AddEvent(string name,EventHandler<AliciumEventArgs> e)
+		public static void AddToEvent(string name,EventHandler<AliciumEventArgs> e)
 		{
 			events[name] += e;
 		}
@@ -75,7 +75,7 @@ namespace Grimoire
 		/// <param name='e'>
 		/// The function.
 		/// </param>
-		public static void RemoveEvent(string name,EventHandler<AliciumEventArgs> e)
+		public static void RemoveFromEvent(string name,EventHandler<AliciumEventArgs> e)
 		{
 			events[name] -= e;
 		}

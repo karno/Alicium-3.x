@@ -16,8 +16,9 @@ namespace Alice
 	{
 		public static void CuiMain()
 		{
-			Console.Write(@"Alicium 3.x kernel v3.0
-build 20.130.117
+			Console.Write(
+@"Alicium 3.x kernel v3.0
+build 20.130.119
 
 Alice:> ");
 			while(true)
@@ -30,7 +31,8 @@ Alice:> ");
 				}
 				else if(command=="help")
 				{
-					Console.WriteLine(@"exit ... exit from Alicium kernel.
+					Console.WriteLine(
+@"exit ... exit from Alicium kernel.
 load [File] ... Load a plugin file.
 rm [Word] ... Unload plugins whose name contains the Word.
 rm -a ... Unload all plugins.
@@ -54,7 +56,8 @@ help ... Show this.");
 				}
 				else if(command.Contains("rm "))
 				{
-					if(Magic.CutString("rm ",command)[0] == "-a" || Grimoire.Magic.CutString("rm ",command)[0] == "--all")
+					if(Magic.CutString("rm ",command)[0] == "-a" 
+					   || Grimoire.Magic.CutString("rm ",command)[0] == "--all")
 					{
 						Plugin.Unload(Plugin.Plugins);
 						Console.WriteLine("All Plugins was unloaded.");
@@ -62,7 +65,8 @@ help ... Show this.");
 					}
 					else
 					{
-						var del=Plugin.Plugins.FindAll((x) => x.GetType().ToString().Contains(Magic.CutString("rm ",command)[0]));
+						var del=Plugin.Plugins.FindAll((x) => 
+						 x.GetType().ToString().Contains(Magic.CutString("rm ",command)[0]));
 						Plugin.Unload(del);
 						Console.WriteLine(del.Count + " Plugins was unloaded.");
 			       	Console.WriteLine(Plugin.Plugins.Count + " Plugins loaded now.");
@@ -92,21 +96,25 @@ help ... Show this.");
 		}
 		public static void UpdateCui()
 		{
-			Console.WriteLine("Updating...");
 			try
 			{
 				Guignol.Update();
 			}
-			catch
+			catch(Exception e)
 			{
-				Console.WriteLine("Failed to update repository datas.Please retry later.");
+				Console.WriteLine(e.Message + "\n" + e.InnerException + "\n" + e.StackTrace);
 			}
 		}
 		public static void InstallCui(string name)
 		{
-			Console.WriteLine("Solving dependences...");
+			try
+			{
 				Guignol.Install(name);
-				Console.WriteLine(name + " is completely installed.");
+			}
+			catch(Exception e)
+			{
+				Console.WriteLine(e.Message + "\n" + e.InnerException + "\n" + e.StackTrace);
+			}
 		}
 	}
 }

@@ -1,18 +1,19 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Alice/Main.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Grimoire/Exceptions.cs">
     <Files>
-      <File FileName="Grimoire/Events.cs" Line="37" Column="1" />
-      <File FileName="Grimoire/PluginBase.cs" Line="7" Column="34" />
-      <File FileName="Grimoire/Repository.cs" Line="10" Column="2" />
+      <File FileName="Grimoire/Events.cs" Line="9" Column="34" />
+      <File FileName="Grimoire/PluginBase.cs" Line="5" Column="2" />
       <File FileName="Grimoire/Magic.cs" Line="9" Column="11" />
-      <File FileName="Test/Hoge.cs" Line="9" Column="4" />
-      <File FileName="Grimoire/Plugin.cs" Line="14" Column="67" />
-      <File FileName="Alice/Main.cs" Line="20" Column="5" />
-      <File FileName="Grimoire/Settings.cs" Line="32" Column="6" />
+      <File FileName="Test/Hoge.cs" Line="31" Column="36" />
+      <File FileName="Grimoire/Plugin.cs" Line="77" Column="14" />
+      <File FileName="Alice/Main.cs" Line="30" Column="30" />
+      <File FileName="Grimoire/Settings.cs" Line="68" Column="12" />
       <File FileName="Grimoire/Exceptions.cs" Line="10" Column="19" />
-      <File FileName="Grimoire/Guignol.cs" Line="71" Column="60" />
-      <File FileName="Alice/Cui.cs" Line="5" Column="16" />
+      <File FileName="Grimoire/Guignol.cs" Line="9" Column="1" />
+      <File FileName="Alice/Cui.cs" Line="29" Column="30" />
+      <File FileName="Grimoire/Manage.cs" Line="1" Column="1" />
+      <File FileName="Grimoire/Package.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
