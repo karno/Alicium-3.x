@@ -25,7 +25,7 @@ namespace Grimoire
 		{
 			Console.WriteLine("Updating...");
 			var Dl=new List<Package>();
-			//try
+			try
 			{
 				ServicePointManager.ServerCertificateValidationCallback = (a,b,c,d) => true; 
 				foreach(string s in Settings.RepUrls)
@@ -41,10 +41,10 @@ namespace Grimoire
 				Settings.PackList = Dl.ToArray();
 				Console.WriteLine("Repository datas is updated successfully.");
 			}
-			/*catch
+			catch
 			{
 				throw new GuignolException("Failed to update.Please check internet connection.");			
-			}*/
+			}
 		}
 		/// <summary>
 		/// Install a package in Alicium system.
@@ -74,7 +74,7 @@ namespace Grimoire
 						Console.WriteLine("Extracting...");
 						var z = new FastZip();
 						z.ExtractZip("Plugins/tmp.zip","Plugins/"+p.Name,"");
-						File.Delete("tmp");
+						File.Delete("Plugins/tmp.zip");
 						Console.WriteLine("Registering...");
 						var n = new List<Package>(Settings.Installed);
 						n.Add(p);

@@ -13,7 +13,7 @@ namespace Alice
 	{
 		public static void Main(string[] args)
 		{
-			buildtestrepo();
+			//buildtestrepo();
 			Init();
 			if(args.Length != 0 && args[0] == "-c")
 			{
