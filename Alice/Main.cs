@@ -13,7 +13,7 @@ namespace Alice
 	{
 		public static void Main(string[] args)
 		{
-			//buildtestrepo();
+			buildtestrepo();
 			Init();
 			if(args.Length != 0 && args[0] == "-c")
 			{
@@ -51,7 +51,7 @@ namespace Alice
 				Depend=new string[0],
 				Type=PluginType.Develop,
 				IncludingDlls=new string[]{"Test.dll"},
-				DlUrl="https://raw.github.com/a1cn/Alicium-3.x/master/Repository/Test/v1.0.0/test.zip"
+				DlUrl="\"https://raw.github.com/a1cn/Alicium-3.x/master/Repository/Test/v1.0.0/test.zip\""
 			},"a.xml");
 		}
 	}

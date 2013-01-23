@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using System.Net;
 using System.Web;
 using System.IO;
-using Ionic.Zip;
-using Ionic.Zlib;
+using ICSharpCode.SharpZipLib.Zip;
 
 namespace Grimoire
 {
@@ -73,12 +72,8 @@ namespace Grimoire
 						Console.WriteLine("Downloading From : "+p.DlUrl);
 						wc.DownloadFile(new Uri(p.DlUrl.Replace("\"","")),"Plugins/tmp.zip");
 						Console.WriteLine("Extracting...");
-						using(ZipFile z=new ZipFile("Plugins/tmp.zip"))
-						{
-							Console.WriteLine("To : Plugins/"+p.Name);
-							z.ExtractAll(@"Plugins\"+p.Name+@"\", 
-							             ExtractExistingFileAction.OverwriteSilently);
-						}
+						var z = new FastZip();
+						z.ExtractZip("Plugins/tmp.zip","Plugins/"+p.Name,"");
 						File.Delete("tmp");
 						Console.WriteLine("Registering...");
 						var n = new List<Package>(Settings.Installed);
