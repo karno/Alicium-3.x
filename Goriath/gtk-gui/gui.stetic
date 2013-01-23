@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<stetic-interface>
+  <configuration>
+    <images-root-path>..</images-root-path>
+    <target-gtk-version>2.12</target-gtk-version>
+  </configuration>
+  <import>
+    <widget-library name="../bin/Debug/Goriath.dll" internal="true" />
+  </import>
+  <widget class="Gtk.Window" id="Goriath.GoriathMain" design-size="400 300">
+    <property name="MemberName" />
+    <property name="Title" translatable="yes">GoriathMain</property>
+    <property name="WindowPosition">CenterOnParent</property>
+    <child>
+      <widget class="Gtk.Fixed" id="fixed1">
+        <property name="MemberName" />
+        <property name="HasWindow">False</property>
+        <child>
+          <widget class="Gtk.Label" id="label1">
+            <property name="MemberName" />
+            <property name="LabelProp" translatable="yes">Hello,Gtk!</property>
+          </widget>
+          <packing>
+            <property name="X">149</property>
+            <property name="Y">93</property>
+          </packing>
+        </child>
+      </widget>
+    </child>
+  </widget>
+</stetic-interface>

@@ -18,7 +18,7 @@ namespace Alice
 		{
 			Console.Write(
 @"Alicium 3.x kernel v3.0
-build 20.130.119
+build 20.130.123
 
 Alice:> ");
 			while(true)
@@ -33,12 +33,21 @@ Alice:> ");
 				{
 					Console.WriteLine(
 @"exit ... exit from Alicium kernel.
+
 load [File] ... Load a plugin file.
+
 rm [Word] ... Unload plugins whose name contains the Word.
+
 rm -a ... Unload all plugins.
+
 ls ... Show the list of loaded plugins.
+
+guignol [command] ... Execute Guignol plugin install/uninstall system.
+
 [Name] ... Execute the plugin.
+
 eventtest ... Call the test event.
+
 help ... Show this.");
 				}
 				else if(command.Contains("load "))
@@ -53,6 +62,17 @@ help ... Show this.");
 						Console.WriteLine("Not found.");
 					}
 			       Console.WriteLine(Plugin.Plugins.Count + " Plugins loaded now.");
+				}
+				else if(command.Contains("guignol"))
+				{
+					try
+					{
+						gexec(command.Replace("guignol ",""));
+					}
+					catch(Exception e)
+					{
+						Console.WriteLine(e.ToString());
+					}
 				}
 				else if(command.Contains("rm "))
 				{
@@ -87,6 +107,7 @@ help ... Show this.");
 				{
 					Plugin.CallPlugin(command,"");
 				}
+				else if(command == null || command == ""){}
 				else
 				{
 					Console.WriteLine(command + " is not vaild command.");
@@ -94,26 +115,144 @@ help ... Show this.");
 				Console.Write("Alice:> ");
 			}
 		}
-		public static void UpdateCui()
+		static void gexec(string com)
 		{
-			try
+			var exec = Magic.CutString(" ",com);
+			Action ghelp = () => 
 			{
-				Guignol.Update();
+				Console.WriteLine(
+@"Guignol plugin install/uninstall system
+
+Usage : guignol install|remove pkg
+        guignol command
+
+Commands:
+	update ... update repository datas.
+
+	help ... show this.
+
+	list ... show packages in repository datas.
+	     -i ... only installed packages.
+	     -n ... only not installed packages.
+	     -t type ... only show packages whose type is it.
+						types ... {Ui,Tool,Game,Develop}
+
+	find word ... show packages whose name contains the word.
+	     -i word ... only installed packages.
+	     -n word ... only not installed packages.
+	     -t type ... only show packages whose type is it.
+						types ... {Ui,Tool,Game,Develop}
+");
+			};
+			if(exec.Length==0)
+			{
+				ghelp();
 			}
-			catch(Exception e)
+			switch(exec[0])
 			{
-				Console.WriteLine(e.Message + "\n" + e.InnerException + "\n" + e.StackTrace);
-			}
-		}
-		public static void InstallCui(string name)
-		{
-			try
-			{
-				Guignol.Install(name);
-			}
-			catch(Exception e)
-			{
-				Console.WriteLine(e.Message + "\n" + e.InnerException + "\n" + e.StackTrace);
+			case "update":
+				try
+				{
+					Guignol.Update();
+				}
+				catch(GuignolException e)
+				{
+					Console.WriteLine(e.Message);
+				}
+				break;
+			
+			case "install":
+				if(exec.Length < 2) {ghelp();break;}
+				try
+				{
+					Guignol.Install(exec[1]);
+				}
+				catch(GuignolException e)
+				{
+					Console.WriteLine(e.Message);
+				}
+				break;
+				
+			case "remove":
+				if(exec.Length < 2) {ghelp();break;}
+				try
+				{
+					Guignol.Remove(exec[1]);
+				}
+				catch(GuignolException e)
+				{
+					Console.WriteLine(e.Message);
+				}
+				break;
+				
+			case "list":
+				if(exec.Length < 2)
+				{
+					new List<Package>(Settings.PackList)
+						.ForEach(a=>Console.WriteLine(a.Name));
+				}
+				else
+				{
+					/*Action<Package> pred = (x) => {};
+					for(int i=0;i<exec.Length-1;i++)
+					{
+						var s = exec[i+1];
+						switch(s)
+						{
+						case "-i":
+							pred += (x) => new List<Package>(Settings.Installed).Contains(x);
+							break;
+						case "-n":
+							pred += (x) => !(new List<Package>(Settings.Installed).Contains(x));
+							break;
+						case "-t":
+							pred += (x) => x.Type == (PluginType)Enum.Parse(typeof(PluginType),exec[i+2]);
+							break;
+						default:
+							break;
+						}
+					}*/
+				}
+				break;
+				
+			case "find":
+				if(exec.Length < 3)
+				{
+					new List<Package>(Settings.PackList)
+						.FindAll(x=>x.Name.Contains(exec[1]))
+							.ForEach(x=>Console.WriteLine(x.Name));
+				}
+				else
+				{
+					/*Action<Package> pred = (x) => {};
+					for(int i=0;i<exec.Length-2;i++)
+					{
+						var s = exec[i+2];
+						switch(s)
+						{
+						case "-i":
+							pred += (x) => new List<Package>(Settings.Installed).Contains(x);
+							break;
+						case "-n":
+							pred += (x) => !new List<Package>(Settings.Installed).Contains(x);
+							break;
+						case "-t":
+							pred += (x) => x.Type == (PluginType)Enum.Parse(typeof(PluginType),exec[i+3]);
+							break;
+						default:
+							break;
+						}
+					}*/
+				}
+				break;
+				
+			case "help":
+				ghelp();
+				break;
+				
+			default:
+				ghelp();
+				break;
 			}
 		}
 	}

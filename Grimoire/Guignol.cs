@@ -42,9 +42,9 @@ namespace Grimoire
 				Settings.PackList = Dl.ToArray();
 				Console.WriteLine("Repository datas is updated successfully.");
 			}
-			catch(Exception e)
+			catch
 			{
-				throw new GuignolException(e.Message);			
+				throw new GuignolException("Failed to update.Please check internet connection.");			
 			}
 		}
 		/// <summary>
@@ -71,7 +71,6 @@ namespace Grimoire
 					try
 					{
 						Console.WriteLine("Downloading From : "+p.DlUrl);
-						//Directory.CreateDirectory("Plugins/"+p.Name);
 						wc.DownloadFile(new Uri(p.DlUrl.Replace("\"","")),"Plugins/tmp.zip");
 						Console.WriteLine("Extracting...");
 						using(ZipFile z=new ZipFile("Plugins/tmp.zip"))
@@ -89,7 +88,7 @@ namespace Grimoire
 					}
 					catch(Exception e)
 					{
-						throw e;
+						throw new GuignolException("install failed. "+e.Message);
 					}
 				}
 			}
@@ -128,7 +127,7 @@ namespace Grimoire
 					}
 					catch(Exception e)
 					{
-						throw e;
+						throw new GuignolException("install failed. "+e.Message);
 					}
 			}
 			Console.WriteLine(name + " is completely removed.");
@@ -147,27 +146,30 @@ namespace Grimoire
 		/// </exception>
 		public static Package[] SolveDepend(Package r)
 		{
-			var ret = new List<Package>();
-			ret.Add(r);
-			Solve(r,ref ret);
-			return ret.ToArray();
+			try
+			{
+				var ret = new List<Package>();
+				ret.Add(r);
+				Solve(r,ref ret);
+				return ret.ToArray();
+			}
+			catch (Exception)
+			{
+				throw new GuignolException(
+					"Some of Dependences isn't found from database." +
+					"Please update repository datas and retry later.");
+			}
 		}
 		private static void Solve(Package e,ref List<Package> l)
 		{
 			foreach(string s in e.Depend)
 			{
-				if(!new List<Package>(Settings.PackList).Exists(x=>x.Name==s))
-				{
-					throw new GuignolException(
-						"Some of Dependences isn't found from database.\n" +
-						"Please update repository datas and retry later.");
-				}
-				var ad=new List<Package>(Settings.PackList).Find(y=>y.Name==s);
-				if(!l.Contains(ad))
-				{
-					l.Add(ad);
-				}
-				Solve(ad,ref l);
+					var ad=new List<Package>(Settings.PackList).Find(y=>y.Name==s);
+					if(!l.Contains(ad))
+					{
+						l.Add(ad);
+					}
+					Solve(ad,ref l);
 			}
 		}
 	}

@@ -21,6 +21,7 @@ namespace Grimoire
 		public string Name;
 		public string Version;
 		public UpdateType UpdateInfo;
+		public string[] IncludingDlls;
 		public string[] Depend;
 		public PluginType Type;
 		public string DlUrl;

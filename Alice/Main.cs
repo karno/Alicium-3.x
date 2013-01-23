@@ -5,6 +5,7 @@ using System.Diagnostics;
 using System.Reflection;
 using System.IO;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Alice
 {
@@ -12,6 +13,7 @@ namespace Alice
 	{
 		public static void Main(string[] args)
 		{
+			//buildtestrepo();
 			Init();
 			if(args.Length != 0 && args[0] == "-c")
 			{
@@ -30,6 +32,27 @@ namespace Alice
 				//Add official repository
 				Settings.RepUrls=a.ToArray();
 			}
+			var load = 
+				from p in Settings.Installed
+				from s in p.IncludingDlls
+				select "Plugins/" + p.Name + "/" + s;
+			foreach(string l in load)
+			{
+				Plugin.Load(l);
+			}
+		}
+		static void buildtestrepo()
+		{
+			Magic.XmlFWrite(new Package()
+			               {
+				Name="Test",
+				Version="1.0.0",
+				UpdateInfo=UpdateType.IMPORTANT,
+				Depend=new string[0],
+				Type=PluginType.Develop,
+				IncludingDlls=new string[]{"Test.dll"},
+				DlUrl="https://raw.github.com/a1cn/Alicium-3.x/master/Repository/Test/v1.0.0/test.zip"
+			},"a.xml");
 		}
 	}
 }
