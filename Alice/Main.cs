@@ -43,7 +43,7 @@ namespace Alice
 		}
 		static void buildtestrepo()
 		{
-			Magic.XmlFWrite(new Package()
+			Magic.XmlFWrite(new Package[]{new Package()
 			               {
 				Name="Test",
 				Version="1.0.0",
@@ -52,7 +52,7 @@ namespace Alice
 				Type=PluginType.Develop,
 				IncludingDlls=new string[]{"Test.dll"},
 				DlUrl="\"https://raw.github.com/a1cn/Alicium-3.x/master/Repository/Test/v1.0.0/test.zip\""
-			},"a.xml");
+			}},"a.xml");
 		}
 	}
 }
