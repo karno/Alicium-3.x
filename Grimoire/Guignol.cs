@@ -113,10 +113,10 @@ namespace Grimoire
 					try
 					{
 						Console.WriteLine("Deleting "+p.Name + " now...");
-						Directory.Delete("Plugins"+p.Name,true);
+						Directory.Delete("Plugins/"+p.Name,true);
 						Console.WriteLine("Unregistering...");
 						var n = new List<Package>(Settings.Installed);
-						n.Remove(p);
+						n.RemoveAll(x=>x.Name==p.Name);
 						Settings.Installed = n.ToArray();
 						Console.WriteLine(p.Name + " is removed.");
 					}

@@ -5,17 +5,17 @@
       <File FileName="Grimoire/Events.cs" Line="9" Column="34" />
       <File FileName="Grimoire/PluginBase.cs" Line="21" Column="39" />
       <File FileName="Grimoire/Magic.cs" Line="9" Column="11" />
-      <File FileName="Test/Hoge.cs" Line="2" Column="4" />
-      <File FileName="Grimoire/Plugin.cs" Line="38" Column="18" />
-      <File FileName="Alice/Main.cs" Line="55" Column="15" />
-      <File FileName="Grimoire/Settings.cs" Line="68" Column="12" />
-      <File FileName="Grimoire/Exceptions.cs" Line="10" Column="19" />
-      <File FileName="Grimoire/Guignol.cs" Line="161" Column="6" />
-      <File FileName="Alice/Cui.cs" Line="73" Column="15" />
+      <File FileName="Test/Hoge.cs" Line="20" Column="22" />
+      <File FileName="Grimoire/Plugin.cs" Line="56" Column="3" />
+      <File FileName="Alice/Main.cs" Line="48" Column="17" />
+      <File FileName="Grimoire/Settings.cs" Line="71" Column="6" />
+      <File FileName="Grimoire/Exceptions.cs" Line="10" Column="17" />
+      <File FileName="Grimoire/Guignol.cs" Line="106" Column="46" />
+      <File FileName="Alice/Cui.cs" Line="73" Column="7" />
       <File FileName="Grimoire/Manage.cs" Line="1" Column="1" />
-      <File FileName="Grimoire/Package.cs" Line="17" Column="3" />
+      <File FileName="Grimoire/Package.cs" Line="18" Column="3" />
       <File FileName="Goriath/Init.cs" Line="11" Column="4" />
-      <File FileName="Goriath/GoriathMain.cs" Line="1" Column="14" />
+      <File FileName="Goriath/GoriathMain.cs" Line="1" Column="1" />
       <File FileName="Goriath/AssemblyInfo.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
