@@ -1,0 +1,20 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Alice/Cui.cs">
+    <Files>
+      <File FileName="Grimoire/Events.cs" Line="6" Column="2" />
+      <File FileName="Alice/Cui.cs" Line="25" Column="5" />
+      <File FileName="Grimoire/Guignol.cs" Line="26" Column="29" />
+      <File FileName="Grimoire/Settings.cs" Line="98" Column="7" />
+      <File FileName="Goriath/MainWindow.cs" Line="14" Column="3" />
+      <File FileName="Goriath/Main.cs" Line="23" Column="40" />
+      <File FileName="Test/Hoge.cs" Line="40" Column="37" />
+      <File FileName="Alice/Main.cs" Line="19" Column="5" />
+      <File FileName="Grimoire/Plugin.cs" Line="124" Column="21" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>

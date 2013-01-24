@@ -1,0 +1,6 @@
+Name: Grimoire
+Description: Grimoire
+Version: 0.1
+
+Requires: 
+Libs: -r:@expanded_libdir@/@PACKAGE@/Grimoire.dll

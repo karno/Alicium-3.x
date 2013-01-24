@@ -26,6 +26,7 @@ Alice:> ");
 				string command=Console.ReadLine();
 				if(command=="exit")
 				{
+					Plugin.Unload(Plugin.Plugins);
 					Console.WriteLine("halt.");
 					break;
 				}
@@ -43,6 +44,8 @@ rm -a ... Unload all plugins.
 ls ... Show the list of loaded plugins.
 
 guignol [command] ... Execute Guignol plugin install/uninstall system.
+
+autoexec [command] ... Config whether Alicium kernel executes plugin automaticly in startup.
 
 [Name] ... Execute the plugin.
 
@@ -68,6 +71,17 @@ help ... Show this.");
 					try
 					{
 						gexec(command.Replace("guignol ",""));
+					}
+					catch(Exception e)
+					{
+						Console.WriteLine(e.ToString());
+					}
+				}
+				else if(command.Contains("autoexec"))
+				{
+					try
+					{
+						aexec(command.Replace("autoexec ",""));
 					}
 					catch(Exception e)
 					{
@@ -132,16 +146,8 @@ Commands:
 	help ... show this.
 
 	list ... show packages in repository datas.
-	     -i ... only installed packages.
-	     -n ... only not installed packages.
-	     -t type ... only show packages whose type is it.
-						types ... {Ui,Tool,Game,Develop}
 
 	find word ... show packages whose name contains the word.
-	     -i word ... only installed packages.
-	     -n word ... only not installed packages.
-	     -t type ... only show packages whose type is it.
-						types ... {Ui,Tool,Game,Develop}
 ");
 			};
 			if(exec.Length==0)
@@ -205,7 +211,7 @@ Commands:
 						case "-n":
 							pred += (x) => !(new List<Package>(Settings.Installed).Contains(x));
 							break;
-						case "-t":
+						case "-t":\
 							pred += (x) => x.Type == (PluginType)Enum.Parse(typeof(PluginType),exec[i+2]);
 							break;
 						default:
@@ -252,6 +258,32 @@ Commands:
 				
 			default:
 				ghelp();
+				break;
+			}
+		}
+		static void aexec(string com)
+		{
+			var exec = Magic.CutString(" ",com);
+			Action ahelp = () => 
+			{
+				Console.WriteLine(
+@"Plugin auto execute configure
+
+Usage : autoexec add|remove pkg
+");
+			};
+			if(exec.Length==0)
+			{
+				ahelp();
+			}
+			switch(exec[0])
+			{	
+			case "help":
+				ahelp();
+				break;
+				
+			default:
+				ahelp();
 				break;
 			}
 		}
