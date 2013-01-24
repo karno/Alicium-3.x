@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Net;
 using System.Web;
+using System.Linq;
 using System.IO;
 using ICSharpCode.SharpZipLib.Zip;
 
@@ -103,7 +104,7 @@ namespace Grimoire
 		{
 			Console.WriteLine("Solving dependences...");
 			var hoge = new List<Package>(Settings.Installed).Find(x=>x.Name==name);
-			var uninstall = SolveDepend(hoge);
+			var uninstall = SolveDependR(hoge);
 			Console.WriteLine("Solved successfully.");
 			foreach(Package p in uninstall)
 			{
@@ -166,6 +167,37 @@ namespace Grimoire
 						l.Add(ad);
 					}
 					Solve(ad,ref l);
+			}
+		}
+		public static Package[] SolveDependR(Package r)
+		{
+			try
+			{
+				var ret = new List<Package>();
+				ret.Add(r);
+				SolveR(r,ref ret);
+				return ret.ToArray();
+			}
+			catch (Exception)
+			{
+				throw new GuignolException(
+					"Some of Dependences isn't found from database." +
+					"Please update repository datas and retry later.");
+			}
+		}
+		private static void SolveR(Package e,ref List<Package> l)
+		{
+			var v = from p in Settings.Installed
+				from q in p.Depend
+				where q == e.Name
+				select p;
+			foreach(Package s in v)
+			{
+					if(!l.Contains(s))
+					{
+						l.Add(s);
+					}
+					SolveR(s,ref l);
 			}
 		}
 	}

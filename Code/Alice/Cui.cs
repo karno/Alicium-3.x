@@ -18,7 +18,7 @@ namespace Alice
 		{
 			Console.Write(
 @"Alicium 3.x kernel v3.0
-build 20.130.123
+build 20.130.125
 
 Alice:> ");
 			while(true)
@@ -278,6 +278,7 @@ Usage : autoexec add|remove pkg
 			}
 			switch(exec[0])
 			{	
+				//todo: write a configure code
 			case "help":
 				ahelp();
 				break;

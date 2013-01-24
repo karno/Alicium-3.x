@@ -1,10 +1,10 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Alice/Cui.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Grimoire/Guignol.cs">
     <Files>
       <File FileName="Grimoire/Events.cs" Line="6" Column="2" />
-      <File FileName="Alice/Cui.cs" Line="25" Column="5" />
-      <File FileName="Grimoire/Guignol.cs" Line="26" Column="29" />
+      <File FileName="Alice/Cui.cs" Line="281" Column="35" />
+      <File FileName="Grimoire/Guignol.cs" Line="184" Column="3" />
       <File FileName="Grimoire/Settings.cs" Line="98" Column="7" />
       <File FileName="Goriath/MainWindow.cs" Line="14" Column="3" />
       <File FileName="Goriath/Main.cs" Line="23" Column="40" />
