@@ -3,12 +3,12 @@
   <MonoDevelop.Ide.Workbench ActiveDocument="Grimoire/Guignol.cs">
     <Files>
       <File FileName="Grimoire/Events.cs" Line="6" Column="2" />
-      <File FileName="Alice/Cui.cs" Line="281" Column="35" />
-      <File FileName="Grimoire/Guignol.cs" Line="184" Column="3" />
+      <File FileName="Alice/Cui.cs" Line="135" Column="25" />
+      <File FileName="Grimoire/Guignol.cs" Line="195" Column="1" />
       <File FileName="Grimoire/Settings.cs" Line="98" Column="7" />
-      <File FileName="Goriath/MainWindow.cs" Line="14" Column="3" />
+      <File FileName="Goriath/MainWindow.cs" Line="1" Column="1" />
       <File FileName="Goriath/Main.cs" Line="23" Column="40" />
-      <File FileName="Test/Hoge.cs" Line="40" Column="37" />
+      <File FileName="Test/Hoge.cs" Line="26" Column="3" />
       <File FileName="Alice/Main.cs" Line="19" Column="5" />
       <File FileName="Grimoire/Plugin.cs" Line="124" Column="21" />
     </Files>

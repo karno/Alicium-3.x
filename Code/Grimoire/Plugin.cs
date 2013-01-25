@@ -39,7 +39,7 @@ namespace Grimoire
 					Found.Add(v);
 				}
 			}
-			Found.ForEach(x=>{x.Initalize();});
+			Found.ForEach(x=>x.Initalize());
 			Plugins.AddRange(Found);
 			return Found;
 		}
@@ -51,7 +51,7 @@ namespace Grimoire
 		/// </param>
 		public static void Unload(List<PluginBase> e)
 		{
-				e.ForEach(x=>{x.Dying();});
+				e.ForEach(x=>x.Dying());
 				Plugins.RemoveAll(x=>e.Contains(x));
 		}
 		/// <summary>
@@ -80,6 +80,7 @@ namespace Grimoire
 		{
 			events[name] -= e;
 		}
+		
 		/// <summary>
 		/// Call the event.
 		/// </summary>
@@ -89,9 +90,9 @@ namespace Grimoire
 		/// <param name='value'>
 		/// Value you want to send.
 		/// </param>
-		public static void CallEvent(string name,object value)
+		public static void CallEvent<T>(string name,T value)
 		{
-			events[name](null,new AliciumEventArgs(){Data = value});
+			events[name](null,new AliciumEventArgs(){data = value,type=typeof(T)});
 		}
 		/// <summary>
 		/// Call the plugin.
@@ -106,9 +107,9 @@ namespace Grimoire
 		/// <param name='value'>
 		/// Value you want to send.
 		/// </param>
-		public static void CallPlugin(string name,object value)
+		public static void CallPlugin<T>(string name,T value)
 		{
-			new Task(() => Plugins.Find((x) => x.GetType().ToString() == name).Call(value)).Start();
+			new Task(() => Plugins.Find(x => x.GetType().ToString() == name).Call(value)).Start();
 		}
 		/// <summary>
 		/// Check the plugin exists.
@@ -123,6 +124,29 @@ namespace Grimoire
 		{
 			return Plugins.Exists(x=>name.Contains(x.GetType().ToString()));
 		}
+	}
+	
+	/// <summary>
+	/// Base of the plugin.
+	/// To make a plugin, make your class inherited from this class.
+	/// </summary>
+	public abstract class PluginBase
+	{
+		/// <summary>
+		/// Is called when this plugin is loaded.
+		/// </summary>
+		public abstract void Initalize();
+		/// <summary>
+		/// Is called when this plugin is called.
+		/// </summary>
+		/// <param name='o'>
+		/// Object sent from Alicium kernel or other plugin.
+		/// </param>
+		public abstract void Call(object o);
+		/// <summary>
+		/// Is called when this plugin is unloaded.
+		/// </summary>
+		public abstract void Dying();
 	}
 }
 

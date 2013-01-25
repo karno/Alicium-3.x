@@ -9,6 +9,7 @@ using System.Diagnostics;
 using System.Reflection;
 using System.IO;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Alice
 {
@@ -115,7 +116,7 @@ help ... Show this.");
 				}
 				else if(command=="eventtest")
 				{
-					Plugin.CallEvent("test",null);
+					Plugin.CallEvent("test","");
 				}
 				else if(Plugin.PluginExists(command))
 				{
@@ -192,64 +193,14 @@ Commands:
 				break;
 				
 			case "list":
-				if(exec.Length < 2)
-				{
 					new List<Package>(Settings.PackList)
 						.ForEach(a=>Console.WriteLine(a.Name));
-				}
-				else
-				{
-					/*Action<Package> pred = (x) => {};
-					for(int i=0;i<exec.Length-1;i++)
-					{
-						var s = exec[i+1];
-						switch(s)
-						{
-						case "-i":
-							pred += (x) => new List<Package>(Settings.Installed).Contains(x);
-							break;
-						case "-n":
-							pred += (x) => !(new List<Package>(Settings.Installed).Contains(x));
-							break;
-						case "-t":\
-							pred += (x) => x.Type == (PluginType)Enum.Parse(typeof(PluginType),exec[i+2]);
-							break;
-						default:
-							break;
-						}
-					}*/
-				}
 				break;
 				
 			case "find":
-				if(exec.Length < 3)
-				{
 					new List<Package>(Settings.PackList)
 						.FindAll(x=>x.Name.Contains(exec[1]))
 							.ForEach(x=>Console.WriteLine(x.Name));
-				}
-				else
-				{
-					/*Action<Package> pred = (x) => {};
-					for(int i=0;i<exec.Length-2;i++)
-					{
-						var s = exec[i+2];
-						switch(s)
-						{
-						case "-i":
-							pred += (x) => new List<Package>(Settings.Installed).Contains(x);
-							break;
-						case "-n":
-							pred += (x) => !new List<Package>(Settings.Installed).Contains(x);
-							break;
-						case "-t":
-							pred += (x) => x.Type == (PluginType)Enum.Parse(typeof(PluginType),exec[i+3]);
-							break;
-						default:
-							break;
-						}
-					}*/
-				}
 				break;
 				
 			case "help":
@@ -272,15 +223,32 @@ Commands:
 Usage : autoexec add|remove pkg
 ");
 			};
-			if(exec.Length==0)
+			if(exec.Length<1)
 			{
 				ahelp();
 			}
 			switch(exec[0])
 			{	
-				//todo: write a configure code
 			case "help":
 				ahelp();
+				break;
+				
+			case "add":
+				if(exec.Length > 1)
+				{
+					Settings.Installed.ToList()
+						.FindAll(x=>x.Name==exec[1])
+							.ForEach(x=>AutoExec.Add(x));
+				}
+				break;
+			
+			case "remove":
+				if(exec.Length > 1)
+				{
+					Settings.Installed.ToList()
+						.FindAll(x=>x.Name==exec[1])
+							.ForEach(x=>AutoExec.Remove(x));
+				}
 				break;
 				
 			default:

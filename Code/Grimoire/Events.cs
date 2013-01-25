@@ -29,7 +29,8 @@ namespace Grimoire
 	}
 	public class AliciumEventArgs : EventArgs
 	{
-		public object Data;
+		public object data;
+		public Type type;
 	}
 	
 }

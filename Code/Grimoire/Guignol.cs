@@ -57,7 +57,7 @@ namespace Grimoire
 		{
 			Console.WriteLine("Solving dependences...");
 			var hoge = new List<Package>(Settings.PackList).Find(x=>x.Name==name);
-			var install = SolveDepend(hoge);
+			var install = SolveDepend(hoge,SolveType.Obverse);
 			Console.WriteLine("Solved successfully.");
 			ServicePointManager.ServerCertificateValidationCallback = (a,b,c,d) => true; 
 			foreach(Package p in install)
@@ -104,7 +104,7 @@ namespace Grimoire
 		{
 			Console.WriteLine("Solving dependences...");
 			var hoge = new List<Package>(Settings.Installed).Find(x=>x.Name==name);
-			var uninstall = SolveDependR(hoge);
+			var uninstall = SolveDepend(hoge,SolveType.Reverse);
 			Console.WriteLine("Solved successfully.");
 			foreach(Package p in uninstall)
 			{
@@ -129,6 +129,10 @@ namespace Grimoire
 			}
 			Console.WriteLine(name + " is completely removed.");
 		}
+		public enum SolveType
+		{
+			Obverse,Reverse
+		}
 		/// <summary>
 		/// Solve the dependence of package.
 		/// </summary>
@@ -141,13 +145,14 @@ namespace Grimoire
 		/// <exception cref='GuignolException'>
 		/// Is thrown when some exception happens in solving dependence.
 		/// </exception>
-		public static Package[] SolveDepend(Package r)
+		public static Package[] SolveDepend(Package r,SolveType t)
 		{
 			try
 			{
 				var ret = new List<Package>();
 				ret.Add(r);
-				Solve(r,ref ret);
+				if(t == SolveType.Obverse)Solve(r,ref ret);
+				else SolveR(r,ref ret);
 				return ret.ToArray();
 			}
 			catch (Exception)
@@ -169,22 +174,6 @@ namespace Grimoire
 					Solve(ad,ref l);
 			}
 		}
-		public static Package[] SolveDependR(Package r)
-		{
-			try
-			{
-				var ret = new List<Package>();
-				ret.Add(r);
-				SolveR(r,ref ret);
-				return ret.ToArray();
-			}
-			catch (Exception)
-			{
-				throw new GuignolException(
-					"Some of Dependences isn't found from database." +
-					"Please update repository datas and retry later.");
-			}
-		}
 		private static void SolveR(Package e,ref List<Package> l)
 		{
 			var v = from p in Settings.Installed
@@ -201,5 +190,25 @@ namespace Grimoire
 			}
 		}
 	}
+			
+	public enum UpdateType
+	{
+		IMPORTANT,RECOMMENDED,DEVELOPPING
+	}
+	public enum PluginType
+	{
+		Ui,Tool,Game,Develop
+	}
+	public class Package
+	{
+		public string Name;
+		public string Version;
+		public UpdateType UpdateInfo;
+		public string[] IncludingDlls;
+		public string[] Depend;
+		public PluginType Type;
+		public string DlUrl;
+	}
+	
 }
 
