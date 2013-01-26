@@ -96,7 +96,7 @@ namespace Grimoire
 			set
 			{
 				_a = value;
-				File.Delete("Settings/Installed.xml");
+                File.Delete("Settings/AutoExec.xml");
 				Magic.XmlFWrite(_a,"Settings/AutoExec.xml");
 			}
 		}

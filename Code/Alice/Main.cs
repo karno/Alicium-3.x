@@ -32,14 +32,26 @@ namespace Alice
 				//Add official repository
 				Settings.RepUrls=a.ToArray();
 			}
+            var auto =
+            from p in Settings.AutoExec
+            from s in Settings.Installed
+            where s.Name == p
+            from n in s.IncludingDlls
+            select "Plugins/" + s.Name + "/" + n;
+            foreach (string l in auto)
+            {
+                var a = Plugin.Load(l);
+                a.ForEach(x => Plugin.CallPlugin(x.GetType().ToString(), ""));
+            }
 			var load = 
 				from p in Settings.Installed
 				from s in p.IncludingDlls
+                where !auto.Contains("Plugins/" + p.Name + "/" + s)
 				select "Plugins/" + p.Name + "/" + s;
-			foreach(string l in load)
-			{
-				Plugin.Load(l);
-			}
+            foreach (string l in load)
+            {
+                Plugin.Load(l);
+            }
 		}
 		static void buildtestrepo()
 		{

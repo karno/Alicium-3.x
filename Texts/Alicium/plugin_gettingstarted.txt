@@ -1,13 +1,37 @@
-プラグインを作るには
+﻿プラグインを作るには
 
-	1. Visual StudioかMonoDevelopで「ライブラリ」としてプロジェクトを作ります。
-	2. 参照に「Grimoire.dll」を追加します。
-	3. 「Grimoire.PluginBase」から継承してクラスをつくります。
-	4. ビルドします。
+1. Visual StudioかMonoDevelopで「ライブラリ」としてプロジェクトを作ります。
+2. 参照に「Grimoire.dll」を追加します。
+3. 「Grimoire.PluginBase」から継承してクラスをつくります。
+4. ビルドします。
 
-	ね、簡単でしょ？
+ね、簡単でしょ？
 
-イベントのロードのしかた
+プラグインのロードのしかた
 
-	1.  Alice.exeに引数"-c"を渡して起動します。
-	2.  
+1. Alice.exeに引数"-c"を渡して起動します。
+2. load [ファイル]コマンドを実行します。
+3. lsコマンドで読み込まれたクラスを確認します。
+4. クラス名をタイプして実行します。
+
+イベントについて
+
+Alicium 3.xではイベントによるリアルタイムデータ処理を簡単に利用できます。
+kernel側により定義済みのイベントの他に、ユーザ独自のイベントを定義なしに簡潔に利用できます。
+登録できるメソッドのテンプレート：
+    void your_method(object Sender,AliciumEventArgs e){}
+
+メソッドをイベントに登録：
+    Plugin.AddToEvent("event_name",your_method);
+
+イベントを呼び出す
+    Plugin.CallEvent<Hoge>("your_event",new Hoge());
+
+イベントをハンドルする例
+    void your_method(object sender,AliciumEventArgs e)
+    {
+        Console.WriteLine(e.Type.ToString() + " " + (string)e.Data);
+    }
+
+kernel側で定義済みのイベント一覧
+*coming soon

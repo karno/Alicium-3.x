@@ -19,7 +19,7 @@ namespace Alice
 		{
 			Console.Write(
 @"Alicium 3.x kernel v3.0
-build 20.130.125
+build 20.130.126
 
 Alice:> ");
 			while(true)

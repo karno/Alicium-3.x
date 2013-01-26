@@ -8,14 +8,14 @@ namespace Grimoire
 		{
 			get
 			{
-				return "";
+                return "bYshpF0tTrOkGjaJO6QEA";
 			}
 		}
 		public static string Consumer_Secret
 		{
 			get
 			{
-				return "";
+                return "meM2r5ag2WsZGkj78T683m5W17rOt9QNAFrKEPedbn4";
 			}
 		}
 	}
