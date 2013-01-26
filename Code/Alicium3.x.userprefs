@@ -4,7 +4,7 @@
     <Files>
       <File FileName="Grimoire/Events.cs" Line="6" Column="2" />
       <File FileName="Alice/Cui.cs" Line="135" Column="25" />
-      <File FileName="Grimoire/Guignol.cs" Line="195" Column="1" />
+      <File FileName="Grimoire/Guignol.cs" Line="168" Column="5" />
       <File FileName="Grimoire/Settings.cs" Line="98" Column="7" />
       <File FileName="Goriath/MainWindow.cs" Line="1" Column="1" />
       <File FileName="Goriath/Main.cs" Line="23" Column="40" />
