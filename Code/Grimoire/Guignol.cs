@@ -129,6 +129,30 @@ namespace Grimoire
 			}
 			Console.WriteLine(name + " is completely removed.");
 		}
+		/// <summary>
+		/// Adds the repository.
+		/// </summary>
+		/// <param name='uri'>
+		/// URI of the repository.
+		/// </param>
+		public static void AddRepository(Uri uri)
+		{
+			var l = Settings.RepUrls.ToList();
+			l.Add(uri.ToString());
+			Settings.RepUrls = l.ToArray();
+		}
+		/// <summary>
+		/// Removes the repository.
+		/// </summary>
+		/// <param name='uri'>
+		/// URI of the repository.
+		/// </param>
+		public static void RemoveRepository(Uri uri)
+		{
+			var l = Settings.RepUrls.ToList();
+			l.Remove(uri.ToString());
+			Settings.RepUrls = l.ToArray();
+		}
 		public enum SolveType
 		{
 			Obverse,Reverse

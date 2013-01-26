@@ -53,48 +53,6 @@ namespace Grimoire
             }
         }
 		/// <summary>
-		/// Decode an instance from xml,
-		/// </summary>
-		/// <returns>
-		/// The instance.
-		/// </returns>
-		/// <param name='XML'>
-		/// String written in XML.
-		/// </param>
-		/// <typeparam name='T'>
-		/// The 1st type parameter.
-		/// </typeparam>
-        public static T XmlDecode<T>(string XML)
-        {
-            using (var fs = new StringReader(XML))
-            {
-                var f = new System.Xml.Serialization.XmlSerializer(typeof(T));
-                T obj = (T)f.Deserialize(fs);
-                return obj;
-            }
-        }
-		/// <summary>
-		/// Encode an instance to XML.
-		/// </summary>
-		/// <returns>
-		/// XML.
-		/// </returns>
-		/// <param name='obj'>
-		/// Object you want to encode to XML.
-		/// </param>
-		/// <typeparam name='T'>
-		/// The 1st type parameter.
-		/// </typeparam>
-        public static string XmlEncode<T>(T obj)
-        {
-            using (var fs = new StringWriter())
-            {
-                var bf = new System.Xml.Serialization.XmlSerializer(typeof(T));
-                bf.Serialize(fs, obj);
-                return fs.ToString();
-            }
-        }
-		/// <summary>
 		/// Encode string to Url.
 		/// </summary>
 		/// <returns>
@@ -117,17 +75,17 @@ namespace Grimoire
             }
             return result.ToString();
         }
-        public static string FRead(string path)
+        public static string FRead(string path, Encoding e)
         {
-            using (var streamReader = new StreamReader(path, Encoding.Unicode))
+            using (var streamReader = new StreamReader(path, e))
             {
                 string result = streamReader.ReadToEnd();
                 return result;
             }
         }
-        public static void FWrite(string value, string path)
+        public static void FWrite(string value, string path, Encoding e)
         {
-            using (var streamWriter = new StreamWriter(File.Create(path), Encoding.Unicode))
+            using (var streamWriter = new StreamWriter(File.Create(path), e))
             {
                 streamWriter.Write(value);
             }

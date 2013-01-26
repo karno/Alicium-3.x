@@ -50,9 +50,97 @@
             void Remove() ... アカウント一覧から自分を削除します。
         静的：
             static List<Account> All ... Accountのインスタンスの一覧です。
-            static Account New(string,string,string) ... インスタンス作成用のメソッドです。インスタンスを作成するときは必ずnew Account().New(..)としてください。
+            static Account New(string,string,string) ... インスタンス作成用のメソッドです。インスタンスを作成するときは*必ず*new Account().New(..)としてください。
             static Uri BuildAuthUri() ... 認証用Uriを生成します。PINを受領したら続けてGetAccessToken(string)を呼んでください。
             static Account GetAcccessToken(string) ... BuildAuthUriを呼んだあとにPINを渡して呼ぶと、Accountのインスタンスを返します。
         non_public：
             static string token ... 一時保存用認証用tokenです。
+
+    Aliciumクラス
+        Aliciumクラスは、Aliciumのシステムに関する静的クラスです。
+        静的：
+            static string Consumer_Key{get;} ... コンシューマキーです。（読み取り専用）
+            static string Consumer_Secret{get;} ... コンシューマシークレットです。（読み取り専用）
+
+    Eventsクラス
+        Eventsクラスは、イベントシステム用クラスです。基本的に触る必要はありません。
+        インスタンス： 
+            EventHandler<AliciumEventArgs> this[string] ... お察しください。
+        non_public：
+            Dictionary<string,EventHandler<AliciumEventArgs>> dat ... お察しください。
+
+    AliciumEventArgsクラス
+        AliciumEventArgsクラスは、イベントで渡されるクラスです。
+        インスタンス：
+            object data ... 渡すデータです。
+            Type type ... dataの型です。
+        静的：
+             static AliciumEventArgs Create<T>(T) ... インスタンス作成用便利メソッドです。別に必ずこれでインスタンスをつくらないといけないわけではありません。
+
+
+    GuignolExceptionクラス
+        GuignolExceptionクラスは、Guignolで使用される例外クラスです。
+        コンストラクタ：
+            GuignolException() ... メッセージなし例外です。 
+            GuignolException(string) ... メッセージ付き例外です。
+        インスタンス：
+            string Message{get;} ... メッセージです。（読み取り専用）
+        non_public：
+            string message ... お察しください。
+
+    Guignolクラス
+        Guignolクラスは、apt-get風の自動プラグインインストールシステムを提供するクラスです。
+        インストールされたプラグインは、次回Alicium起動時から自動的に読み込まれます。（自動実行はAutoExecを使用してください。）
+       静的：
+            static void Update() ... インストール可能プラグインの一覧を更新します。
+            static void Install(string) ... 引数として渡された名前のプラグインをインストールしようと試みます。
+            static void Remove(string) ... 引数として渡された名前のプラグインをアンインストールしようと試みます。
+            static void AddRepository(Uri) ... リポジトリを追加します。
+            static void RemoveRepository(Uri) ... リポジトリを削除します。
+            static Package[] SolveDepend(Package,SolveType) ... 指定したパッケージの依存関係を解決します。
+                Solvetype ... {Obverse ... 依存しているパッケージをたどります。 ,Reverse ... 依存されているパッケージをたどります。}
+        non_public：
+            static void Solve(Package,ref List<Package>)  ... 依存関係解決用再帰関数です。
+            static void SolveR(Package,ref List<Package>) ... 依存関係解決用再帰関数です。
+
+    Packageクラス
+        Packageクラスは、パッケージとしてのプラグインの情報を管理するクラスです。
+        リポジトリには、これの配列をXmlSerializerでシリアライズしたものを「.repinfo」という名前で置きます。
+        サンプルはAlicium公式リポジトリを参考にしてください。 
+        インスタンス：
+            string Name ... プラグインの名前です。
+            string Version ... プラグインのバージョンです。
+            UpdateType UpdateInfo ... アップデートのタイプです。各列挙の意味は英語からお察しください。
+            string[] IncludingDlls ... ロードするDLLの名前（パスではない）です。
+            string[] Depend ... 依存しているプラグインの名前（Name）です。
+            PluginType Type ... プラグインの種類です。各列挙の意味は英語からお察しください。
+            string DlUrl ... ダウンロードUrlです。フルパスです。
+
+    Magicクラス
+        Magicクラスは、便利メソッドの静的クラスです。
+        静的：
+            static T XmlFRead<T>(string) ... XMLSerializerを使ってファイルからインスタンスを読み込みます。
+            static void XmlFWrite<T>(T,string) ... XMLSerializerを使ってファイルにインスタンスを保存します。
+            static string UrlEncode(string) ... 文字列をURLEncodeします。
+            static string FRead(string,Encoding) ... 指定したエンコードで文字列をファイルから読み込みます。
+            static string FWrite(string,string,Encoding) ... 指定したエンコードで文字列をファイルに書き込みます。
+            static string[] CutString(string, string) ... 指定した区切り子で文字列を切り分けます。
+
+    AutoExecクラス
+        AutoExecクラスは、プラグインの自動実行を管理する静的クラスです。
+        静的：
+            static void Add(Package) ... 自動実行リストにインストール済のプラグインを追加します。
+            static void Remove(Package) ... 自動実行リストからインストール済のプラグインを削除します。
+
+    Logクラス
+        Logクラスは、ログを管理するクラスです。
+        ログを取るためにインスタンスを作る必要はありません。
+        インスタンス：
+            string Text ... 内容です。
+            DateTime When ... 時刻です。
+        静的：
+            static List<Log> Logs ... 今までに取ったログの一覧です。
+            static Log Add(string) ... ログを取ります。生成したログデータを返します。
+            static Log[] Flush() ... ログを全部消します。消したログたちを返します。
+            static void SendToDeveloper() ... 今までに取ったログたちを開発者に送ります。
 

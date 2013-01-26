@@ -16,11 +16,13 @@ namespace Shanghai
         }
         public override void Call(object o)
         {
-            m = new  Main().ShowDialog();
+            m = new Main();
+			m.ShowDialog();
         }
         public override void Dying()
         {
             Console.WriteLine("* Killing Shanghai Classic UI");
+			try{m.Close();}catch{}
         }
     }
 }

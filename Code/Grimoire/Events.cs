@@ -31,6 +31,10 @@ namespace Grimoire
 	{
 		public object data;
 		public Type type;
+		public static AliciumEventArgs Create<T>(T arg)
+		{
+			return new AliciumEventArgs(){data = arg,type = typeof(T)};
+		}
 	}
 	
 }
