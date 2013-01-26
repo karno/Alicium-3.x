@@ -21,7 +21,7 @@ namespace Goriath
 		public override void Dying ()
 		{
 			Console.WriteLine("* Killing Goriath Gtk# UI");
-			win.Destroy();
+			try{win.Destroy();}catch{}
 		}
 	}
 }

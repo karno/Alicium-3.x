@@ -1,37 +1,58 @@
-﻿プラグインを作るには
+*﻿プラグインを作るには
 
-1. Visual StudioかMonoDevelopで「ライブラリ」としてプロジェクトを作ります。
-2. 参照に「Grimoire.dll」を追加します。
-3. 「Grimoire.PluginBase」から継承してクラスをつくります。
-4. ビルドします。
+    1. Visual StudioかMonoDevelopで「ライブラリ」としてプロジェクトを作ります。
+    2. 参照に「Grimoire.dll」を追加します。
+    3. 「Grimoire.PluginBase」から継承してクラスをつくります。
+    4. ビルドします。
 
 ね、簡単でしょ？
 
-プラグインのロードのしかた
+*プラグインのロードのしかた
 
-1. Alice.exeに引数"-c"を渡して起動します。
-2. load [ファイル]コマンドを実行します。
-3. lsコマンドで読み込まれたクラスを確認します。
-4. クラス名をタイプして実行します。
+    1. Alice.exeに引数"-c"を渡して起動します。
+    2. load [ファイル]コマンドを実行します。
+    3. lsコマンドで読み込まれたクラスを確認します。
+    4. クラス名をタイプして実行します。
 
-イベントについて
+*イベントについて
 
-Alicium 3.xではイベントによるリアルタイムデータ処理を簡単に利用できます。
-kernel側により定義済みのイベントの他に、ユーザ独自のイベントを定義なしに簡潔に利用できます。
-登録できるメソッドのテンプレート：
-    void your_method(object Sender,AliciumEventArgs e){}
+    Alicium 3.xではイベントによるリアルタイムデータ処理を簡単に利用できます。
+    kernel側により定義済みのイベントの他に、ユーザ独自のイベントを*定義なし*に簡潔に利用できます。
+    あなたがするべきことは、AddToEventとCallEventの第一引数に利用したいイベントの名前を書くことだけです。
 
-メソッドをイベントに登録：
-    Plugin.AddToEvent("event_name",your_method);
+    *登録できるメソッドのテンプレート：
+        void your_method(object Sender,AliciumEventArgs e){}
 
-イベントを呼び出す
-    Plugin.CallEvent<Hoge>("your_event",new Hoge());
+    *メソッドをイベントに登録：
+        Plugin.AddToEvent("event_name",your_method);
 
-イベントをハンドルする例
-    void your_method(object sender,AliciumEventArgs e)
-    {
-        Console.WriteLine(e.Type.ToString() + " " + (string)e.Data);
-    }
+    *イベントを呼び出す
+        Plugin.CallEvent<Hoge>("your_event",new Hoge());
 
-kernel側で定義済みのイベント一覧
-*coming soon
+    *イベントをハンドルする例
+        void your_method(object sender,AliciumEventArgs e)
+        {
+            Console.WriteLine(e.Type.ToString() + " " + (string)e.Data);
+        }
+
+    *kernel側で定義済みのイベント一覧 
+    coming soon
+
+*Grimoireのクラスについて
+
+    Accountクラス
+        Accountクラスは、アカウント情報を管理するクラスです。
+        インスタンス：
+            OAuthToken Token ... Twitterizer用のOAuthTokenです。
+            string Screen_Name ... アカウントの名前です。
+            string Access_Token ... アクセストークンです。
+            string Access_Secret ... シークレットトークンです。
+            void Remove() ... アカウント一覧から自分を削除します。
+        静的：
+            static List<Account> All ... Accountのインスタンスの一覧です。
+            static Account New(string,string,string) ... インスタンス作成用のメソッドです。インスタンスを作成するときは必ずnew Account().New(..)としてください。
+            static Uri BuildAuthUri() ... 認証用Uriを生成します。PINを受領したら続けてGetAccessToken(string)を呼んでください。
+            static Account GetAcccessToken(string) ... BuildAuthUriを呼んだあとにPINを渡して呼ぶと、Accountのインスタンスを返します。
+        non_public：
+            static string token ... 一時保存用認証用tokenです。
+

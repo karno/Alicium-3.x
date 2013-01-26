@@ -9,17 +9,18 @@ namespace Shanghai
 {
     public class Init : PluginBase
     {
+		Main m;
         public override void Initalize()
         {
             Console.WriteLine("* Initalize Shanghai Classic UI");
         }
         public override void Call(object o)
         {
-            new Main().ShowDialog();
+            m = new  Main().ShowDialog();
         }
         public override void Dying()
         {
-            
+            Console.WriteLine("* Killing Shanghai Classic UI");
         }
     }
 }

@@ -51,8 +51,9 @@ namespace Grimoire
 		/// </param>
 		public static void Unload(List<PluginBase> e)
 		{
-				e.ForEach(x=>x.Dying());
-				Plugins.RemoveAll(x=>e.Contains(x));
+			var f = new List<PluginBase>(e);
+			f.ForEach(x=>x.Dying());
+			Plugins.RemoveAll(x=>f.Contains(x));
 		}
 		/// <summary>
 		/// From a code of plugin,Make a function handled by the event
