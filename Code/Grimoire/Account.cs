@@ -8,6 +8,14 @@ namespace Grimoire
 	{
 		public static List<Account> All = new List<Account>();
 		static string token;
+		public Account()
+		{
+			if(!All.Contains(this))All.Add(this);
+		}
+		public void Remove()
+		{
+			All.Remove(this);
+		}
 		public static Uri BuildAuthUri()
 		{
 			var res = OAuthUtility.GetRequestToken(Alicium.Consumer_Key,Alicium.Consumer_Secret,"oob");
