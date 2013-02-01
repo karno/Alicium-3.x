@@ -2,12 +2,26 @@ using System;
 
 namespace CoreTweet
 {
-	public class Entities
+	public class Entities : CoreBase
 	{
-		
+		internal override CoreBase Convert (dynamic e)
+		{
+			
+		}
 	}
-	public class HashTag
+	public class HashTag : CoreBase
 	{
+		internal override CoreBase Convert (dynamic e)
+		{
+			
+		}
+	}
+	public class Media : CoreBase
+	{
+		internal override CoreBase Convert (dynamic e)
+		{
+			
+		}
 	}
 	
 }

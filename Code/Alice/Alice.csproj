@@ -24,7 +24,7 @@
     <ConsolePause>false</ConsolePause>
     <CustomCommands>
       <CustomCommands>
-        <Command type="Custom" name="Sync to GitHub" command="../../Sync &quot;Auto sync from MonoDevelop&quot;" workingdir="" />
+        <Command type="Custom" name="Sync to GitHub" command="/home/alice/git/Alicium3.x/Sync &quot;Auto sync from MonoDevelop&quot;" workingdir="/home/alice/git/Alicium3.x/" />
       </CustomCommands>
     </CustomCommands>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>

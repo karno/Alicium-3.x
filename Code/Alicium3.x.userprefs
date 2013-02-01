@@ -1,13 +1,17 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|Mixed Platforms" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Grimoire/Manage.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="CoreTweet/Entities.cs">
     <Files>
-      <File FileName="Grimoire/Manage.cs" Line="26" Column="2" />
+      <File FileName="CoreTweet/Status.cs" Line="31" Column="4" />
+      <File FileName="CoreTweet/DynamicJson.cs" Line="249" Column="21" />
+      <File FileName="CoreTweet/Contributors.cs" Line="5" Column="1" />
+      <File FileName="CoreTweet/CoreBase.cs" Line="13" Column="4" />
       <File FileName="Grimoire/Plugin.cs" Line="56" Column="26" />
-      <File FileName="Grimoire/Settings.cs" Line="1" Column="1" />
-      <File FileName="Grimoire/Account.cs" Line="25" Column="51" />
-      <File FileName="Grimoire/Alicium.cs" Line="1" Column="1" />
-      <File FileName="Grimoire/Events.cs" Line="1" Column="1" />
+      <File FileName="CoreTweet/User.cs" Line="12" Column="3" />
+      <File FileName="Alice/Cui.cs" Line="19" Column="4" />
+      <File FileName="CoreTweet/AssemblyInfo.cs" Line="1" Column="1" />
+      <File FileName="CoreTweet/Entities.cs" Line="24" Column="4" />
+      <File FileName="CoreTweet/Places.cs" Line="9" Column="4" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
