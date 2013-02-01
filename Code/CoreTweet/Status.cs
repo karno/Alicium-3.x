@@ -4,7 +4,7 @@ namespace CoreTweet
 {
 	public class Status : CoreBase
 	{
-		internal override CoreBase Convert (dynamic e)
+		internal override CoreBase ConvertBase (dynamic e)
 		{
 			
 		}
@@ -14,7 +14,7 @@ namespace CoreTweet
 		public long Id;
 		public string Id_Str;
 		public string ScreenName;
-		internal override CoreBase Convert (dynamic e)
+		internal override CoreBase ConvertBase (dynamic e)
 		{
 			return new Contributors()
 			{
@@ -26,7 +26,7 @@ namespace CoreTweet
 	}
 	public class Coordinates : CoreBase
 	{
-		internal override CoreBase Convert (dynamic e)
+		internal override CoreBase ConvertBase (dynamic e)
 		{
 			
 		}

@@ -9,7 +9,10 @@ namespace CoreTweet
 		public bool DefaultProfile;
 		public bool DefaultProfileImage;
 		public string Description;
-		
+		internal override CoreBase ConvertBase (dynamic e)
+		{
+			
+		}
 	}
 }
 

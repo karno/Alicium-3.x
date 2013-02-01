@@ -4,7 +4,7 @@ namespace CoreTweet
 {
 	public class Places : CoreBase
 	{
-		internal override CoreBase Convert (dynamic e)
+		internal override CoreBase ConvertBase (dynamic e)
 		{
 			
 		}
