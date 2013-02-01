@@ -9,5 +9,12 @@ namespace CoreTweet
 			
 		}
 	}
+	public class BoundingBox : CoreBase
+	{
+		internal override CoreBase ConvertBase (dynamic e)
+		{
+			
+		}
+	}
 }
 
