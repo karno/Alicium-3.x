@@ -49,7 +49,7 @@ namespace Grimoire
 		}
 		public static void SendToDeveloper()
 		{
-			//TODO:Think how to send.
+			
 		}
 	}
 }

@@ -39,7 +39,6 @@
     <Compile Include="Exceptions.cs" />
     <Compile Include="Guignol.cs" />
     <Compile Include="Manage.cs" />
-    <Compile Include="Account.cs" />
     <Compile Include="Alicium.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -53,13 +52,6 @@
     <Reference Include="System.Drawing" />
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\Packages\twitterizer.2.4.1.1\lib\net40\Newtonsoft.Json.dll</HintPath>
-    </Reference>
-    <Reference Include="Twitterizer2.Streaming">
-      <HintPath>..\Packages\twitterizer.2.4.1.1\lib\net40\Twitterizer2.Streaming.dll</HintPath>
-    </Reference>
-    <Reference Include="Twitterizer2">
-      <HintPath>..\Packages\twitterizer.2.4.1.1\lib\net40\Twitterizer2.dll</HintPath>
-      <Private>False</Private>
     </Reference>
     <Reference Include="ICSharpCode.SharpZipLib">
       <HintPath>..\Packages\SharpZipLib\net-20\ICSharpCode.SharpZipLib.dll</HintPath>
