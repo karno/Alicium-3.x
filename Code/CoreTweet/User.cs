@@ -2,11 +2,14 @@ using System;
 
 namespace CoreTweet
 {
-	public class User
+	public class User : CoreBase
 	{
-		public User ()
-		{
-		}
+		public bool ContributorsEnabled;
+		public DateTime CreatedAt;
+		public bool DefaultProfile;
+		public bool DefaultProfileImage;
+		public string Description;
+		
 	}
 }
 

@@ -39,10 +39,10 @@
     <Compile Include="AssemblyInfo.cs" />
     <Compile Include="Status.cs" />
     <Compile Include="DynamicJson.cs" />
-    <Compile Include="Contributors.cs" />
     <Compile Include="CoreBase.cs" />
     <Compile Include="User.cs" />
     <Compile Include="Entities.cs" />
+    <Compile Include="Places.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>
