@@ -2,10 +2,11 @@ using System;
 
 namespace CoreTweet
 {
-	public class Status
+	public class Status : CoreBase
 	{
-		public Status ()
+		internal override CoreBase Convert (dynamic e)
 		{
+			
 		}
 	}
 	public class Contributors : CoreBase
@@ -21,6 +22,13 @@ namespace CoreTweet
 				Id_Str = (string)e.id_str,
 				ScreenName = (string)e.screen_name
 			};
+		}
+	}
+	public class Coordinates : CoreBase
+	{
+		internal override CoreBase Convert (dynamic e)
+		{
+			
 		}
 	}
 }

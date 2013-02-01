@@ -2,10 +2,11 @@ using System;
 
 namespace CoreTweet
 {
-	public class Places
+	public class Places : CoreBase
 	{
-		public Places ()
+		internal override CoreBase Convert (dynamic e)
 		{
+			
 		}
 	}
 }
