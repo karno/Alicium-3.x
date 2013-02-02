@@ -160,7 +160,7 @@ namespace Codeplex.Data
         {
             return obj.GetType()
                 .GetProperties(BindingFlags.Public | BindingFlags.Instance)
-                .Select(pi => new { Name = pi.Name, Value = pi.GetValue(obj, null) })
+                .Select(pi => new { pi.Name, Value = pi.GetValue(obj, null) })
                 .Select(a => new XStreamingElement(a.Name, CreateTypeAttr(GetJsonType(a.Value)), CreateJsonNode(a.Value)));
         }
 
@@ -177,62 +177,62 @@ namespace Codeplex.Data
 
         // dynamic structure represents JavaScript Object/Array
 
-        readonly XElement xml;
-        readonly JsonType jsonType;
+        readonly XElement _xml;
+        readonly JsonType _jsonType;
 
         /// <summary>create blank JSObject</summary>
         public DynamicJson()
         {
-            xml = new XElement("root", CreateTypeAttr(JsonType.@object));
-            jsonType = JsonType.@object;
+            _xml = new XElement("root", CreateTypeAttr(JsonType.@object));
+            _jsonType = JsonType.@object;
         }
 
         private DynamicJson(XElement element, JsonType type)
         {
             Debug.Assert(type == JsonType.array || type == JsonType.@object);
 
-            xml = element;
-            jsonType = type;
+            _xml = element;
+            _jsonType = type;
         }
 
-        public bool IsObject { get { return jsonType == JsonType.@object; } }
+        public bool IsObject { get { return _jsonType == JsonType.@object; } }
 
-        public bool IsArray { get { return jsonType == JsonType.array; } }
+        public bool IsArray { get { return _jsonType == JsonType.array; } }
 
         /// <summary>has property or not</summary>
         public bool IsDefined(string name)
         {
-            return IsObject && (xml.Element(name) != null);
+            return IsObject && (_xml.Element(name) != null);
         }
 
         /// <summary>has property or not</summary>
         public bool IsDefined(int index)
         {
-            return IsArray && (xml.Elements().ElementAtOrDefault(index) != null);
+            return IsArray && (_xml.Elements().ElementAtOrDefault(index) != null);
         }
 
         /// <summary>delete property</summary>
         public bool Delete(string name)
         {
-            var elem = xml.Element(name);
+            var elem = _xml.Element(name);
             if (elem != null)
             {
                 elem.Remove();
                 return true;
             }
-            else return false;
+            return false;
         }
 
         /// <summary>delete property</summary>
         public bool Delete(int index)
         {
-            var elem = xml.Elements().ElementAtOrDefault(index);
+            var elem = _xml.Elements().ElementAtOrDefault(index);
             if (elem != null)
             {
                 elem.Remove();
                 return true;
             }
-            else return false;
+            return false;
         }
 
         /// <summary>mapping to Array or Class by Public PropertyName</summary>
@@ -262,7 +262,7 @@ namespace Codeplex.Data
             var dict = targetType.GetProperties(BindingFlags.Public | BindingFlags.Instance)
                 .Where(p => p.CanWrite)
                 .ToDictionary(pi => pi.Name, pi => pi);
-            foreach (var item in xml.Elements())
+            foreach (var item in _xml.Elements())
             {
                 PropertyInfo propertyInfo;
                 if (!dict.TryGetValue(item.Name.LocalName, out propertyInfo)) continue;
@@ -277,9 +277,9 @@ namespace Codeplex.Data
             if (targetType.IsArray) // Foo[]
             {
                 var elemType = targetType.GetElementType();
-                dynamic array = Array.CreateInstance(elemType, xml.Elements().Count());
+                dynamic array = Array.CreateInstance(elemType, _xml.Elements().Count());
                 var index = 0;
-                foreach (var item in xml.Elements())
+                foreach (var item in _xml.Elements())
                 {
                     array[index++] = DeserializeValue(item, elemType);
                 }
@@ -289,7 +289,7 @@ namespace Codeplex.Data
             {
                 var elemType = targetType.GetGenericArguments()[0];
                 dynamic list = Activator.CreateInstance(targetType);
-                foreach (var item in xml.Elements())
+                foreach (var item in _xml.Elements())
                 {
                     list.Add(DeserializeValue(item, elemType));
                 }
@@ -325,8 +325,8 @@ namespace Codeplex.Data
             if (binder.Type == typeof(IEnumerable) || binder.Type == typeof(object[]))
             {
                 var ie = (IsArray)
-                    ? xml.Elements().Select(x => ToValue(x))
-                    : xml.Elements().Select(x => (dynamic)new KeyValuePair<string, object>(x.Name.LocalName, ToValue(x)));
+                    ? _xml.Elements().Select(x => ToValue(x))
+                    : _xml.Elements().Select(x => (dynamic)new KeyValuePair<string, object>(x.Name.LocalName, ToValue(x)));
                 result = (binder.Type == typeof(object[])) ? ie.ToArray() : ie;
             }
             else
@@ -351,24 +351,24 @@ namespace Codeplex.Data
         public override bool TryGetIndex(GetIndexBinder binder, object[] indexes, out object result)
         {
             return (IsArray)
-                ? TryGet(xml.Elements().ElementAtOrDefault((int)indexes[0]), out result)
-                : TryGet(xml.Element((string)indexes[0]), out result);
+                ? TryGet(_xml.Elements().ElementAtOrDefault((int)indexes[0]), out result)
+                : TryGet(_xml.Element((string)indexes[0]), out result);
         }
 
         public override bool TryGetMember(GetMemberBinder binder, out object result)
         {
             return (IsArray)
-                ? TryGet(xml.Elements().ElementAtOrDefault(int.Parse(binder.Name)), out result)
-                : TryGet(xml.Element(binder.Name), out result);
+                ? TryGet(_xml.Elements().ElementAtOrDefault(int.Parse(binder.Name)), out result)
+                : TryGet(_xml.Element(binder.Name), out result);
         }
 
         private bool TrySet(string name, object value)
         {
             var type = GetJsonType(value);
-            var element = xml.Element(name);
+            var element = _xml.Element(name);
             if (element == null)
             {
-                xml.Add(new XElement(name, CreateTypeAttr(type), CreateJsonNode(value)));
+                _xml.Add(new XElement(name, CreateTypeAttr(type), CreateJsonNode(value)));
             }
             else
             {
@@ -382,10 +382,10 @@ namespace Codeplex.Data
         private bool TrySet(int index, object value)
         {
             var type = GetJsonType(value);
-            var e = xml.Elements().ElementAtOrDefault(index);
+            var e = _xml.Elements().ElementAtOrDefault(index);
             if (e == null)
             {
-                xml.Add(new XElement("item", CreateTypeAttr(type), CreateJsonNode(value)));
+                _xml.Add(new XElement("item", CreateTypeAttr(type), CreateJsonNode(value)));
             }
             else
             {
@@ -413,19 +413,19 @@ namespace Codeplex.Data
         public override IEnumerable<string> GetDynamicMemberNames()
         {
             return (IsArray)
-                ? xml.Elements().Select((x, i) => i.ToString())
-                : xml.Elements().Select(x => x.Name.LocalName);
+                ? _xml.Elements().Select((x, i) => i.ToString())
+                : _xml.Elements().Select(x => x.Name.LocalName);
         }
 
         /// <summary>Serialize to JsonString</summary>
         public override string ToString()
         {
             // <foo type="null"></foo> is can't serialize. replace to <foo type="null" />
-            foreach (var elem in xml.Descendants().Where(x => x.Attribute("type").Value == "null"))
+            foreach (var elem in _xml.Descendants().Where(x => x.Attribute("type").Value == "null"))
             {
                 elem.RemoveNodes();
             }
-            return CreateJsonString(new XStreamingElement("root", CreateTypeAttr(jsonType), xml.Elements()));
+            return CreateJsonString(new XStreamingElement("root", CreateTypeAttr(_jsonType), _xml.Elements()));
         }
     }
 }
